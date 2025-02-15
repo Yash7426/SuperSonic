@@ -1,8 +1,8 @@
-import { compare } from 'bcrypt-ts';
+import { ethers } from "ethers";
 import NextAuth, { type User, type Session } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { getUser } from '@/lib/db/queries';
+import { getUserByPublicAddress, clearUserNonce } from '@/lib/db/queries';
 
 import { authConfig } from './auth.config';
 
@@ -19,14 +19,40 @@ export const {
   ...authConfig,
   providers: [
     Credentials({
-      credentials: {},
-      async authorize({ email, password }: any) {
-        const users = await getUser(email);
-        if (users.length === 0) return null;
-        // biome-ignore lint: Forbidden non-null assertion.
-        const passwordsMatch = await compare(password, users[0].password!);
-        if (!passwordsMatch) return null;
-        return users[0] as any;
+      id: "crypto",
+      name: "Crypto Wallet Auth",
+      credentials: {
+        publicAddress: { label: "Public Address", type: "text" },
+        signedNonce: { label: "Signed Nonce", type: "text" },
+      },
+      async authorize({ publicAddress, signedNonce }: any) {
+        // Fetch the user by publicAddress from your database using Drizzle
+        const [user] = await getUserByPublicAddress(publicAddress);
+        if (!user || !user.cryptoNonce || !user.cryptoNonceExpires) return null;
+        
+        // Verify the signature using ethers.js
+        let recoveredAddress: string;
+        try {
+          recoveredAddress = ethers.verifyMessage(user.cryptoNonce, signedNonce);
+        } catch (error) {
+          return null;
+        }
+        
+        // Compare addresses (use lowercase for consistency)
+        if (recoveredAddress.toLowerCase() !== publicAddress.toLowerCase()) {
+          return null;
+        }
+        
+        // Check that the nonce hasn’t expired
+        if (new Date(user.cryptoNonceExpires) < new Date()) {
+          return null;
+        }
+        
+        // Clear the nonce (or update it) after successful verification
+        await clearUserNonce(user.id);
+        
+        // Return the user object; this object is saved in the session
+        return { id: user.id, publicAddress: user.publicAddress };
       },
     }),
   ],

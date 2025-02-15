@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
+import localFont from 'next/font/local';
 
 import { ThemeProvider } from '@/components/theme-provider';
 
 import './globals.css';
+import { SessionProvider } from 'next-auth/react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
@@ -14,6 +16,17 @@ export const metadata: Metadata = {
 export const viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari
 };
+
+const marvinVisionsBig = localFont({
+  src: [
+    {
+      path: '/fonts/MarvinVisionsBig.woff2',
+      weight: '400', // adjust if you have other weights
+      style: 'normal',
+    },
+  ],
+  variable: '--font-marvin', // creates a CSS variable for the font
+});
 
 const LIGHT_THEME_COLOR = 'hsl(0 0% 100%)';
 const DARK_THEME_COLOR = 'hsl(240deg 10% 3.92%)';
@@ -43,6 +56,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      className={marvinVisionsBig.variable}
       // `next-themes` injects an extra classname to the body element to avoid
       // visual flicker before hydration. Hence the `suppressHydrationWarning`
       // prop is necessary to avoid the React hydration mismatch warning.
@@ -57,15 +71,17 @@ export default async function RootLayout({
         />
       </head>
       <body className="antialiased">
+      <SessionProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+          >
           <Toaster position="top-center" />
           {children}
         </ThemeProvider>
+      </SessionProvider>
       </body>
     </html>
   );

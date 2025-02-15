@@ -13,6 +13,10 @@ const config: Config = {
       mono: ['geist-mono'],
     },
     extend: {
+      fontFamily: {
+        // Create a custom font family called 'marvin' using the CSS variable
+        marvin: ['var(--font-marvin)', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
