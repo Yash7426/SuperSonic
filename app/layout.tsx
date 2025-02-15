@@ -8,7 +8,7 @@ import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chat.vercel.ai'),
+  metadataBase: new URL('https://super-sonic-6srua1ga3-yash7426s-projects.vercel.app/'),
   title: 'Next.js Chatbot Template',
   description: 'Next.js chatbot template using the AI SDK.',
 };
@@ -20,7 +20,7 @@ export const viewport = {
 const marvinVisionsBig = localFont({
   src: [
     {
-      path: '/fonts/MarvinVisionsBig.woff2',
+      path: '../public/fonts/MarvinVisionsBig-Bold.woff2',
       weight: '400', // adjust if you have other weights
       style: 'normal',
     },

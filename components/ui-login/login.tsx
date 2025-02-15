@@ -54,7 +54,7 @@ export default function Login() {
   console.log("3",session.status)
   return (
     <main>
-      <h1>Login</h1>
+      <h1 className="font-marvin">Login</h1>
       <button onClick={onSignInWithMetaMask}>Sign in with MetaMask</button>
     </main>
   );
