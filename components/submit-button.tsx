@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
+// import { useFormStatus } from 'react-dom';
 
 import { LoaderIcon } from '@/components/icons';
 
@@ -13,7 +13,9 @@ export function SubmitButton({
   children: React.ReactNode;
   isSuccessful: boolean;
 }) {
-  const { pending } = useFormStatus();
+  // const { pending } = useFormStatus();
+
+  const pending = false;
 
   return (
     <Button

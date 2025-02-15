@@ -1,6 +1,6 @@
 'use client';
 
-import { startTransition, useMemo, useOptimistic, useState } from 'react';
+import { startTransition, useMemo, useState } from 'react';
 
 import { saveChatModelAsCookie } from '@/lib/chat-actions/actions';
 import { Button } from '@/components/ui/button';
@@ -22,12 +22,11 @@ export function ModelSelector({
   selectedModelId: string;
 } & React.ComponentProps<typeof Button>) {
   const [open, setOpen] = useState(false);
-  const [optimisticModelId, setOptimisticModelId] =
-    useOptimistic(selectedModelId);
+  const [optimisticModelId, setOptimisticModelId] = useState(selectedModelId);
 
   const selectedChatModel = useMemo(
     () => chatModels.find((chatModel) => chatModel.id === optimisticModelId),
-    [optimisticModelId],
+    [optimisticModelId]
   );
 
   return (
@@ -36,7 +35,7 @@ export function ModelSelector({
         asChild
         className={cn(
           'w-fit data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
-          className,
+          className
         )}
       >
         <Button variant="outline" className="md:px-2 md:h-[34px]">
@@ -53,7 +52,6 @@ export function ModelSelector({
               key={id}
               onSelect={() => {
                 setOpen(false);
-
                 startTransition(() => {
                   setOptimisticModelId(id);
                   saveChatModelAsCookie(id);
