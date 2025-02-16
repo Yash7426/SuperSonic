@@ -54,8 +54,9 @@ export default function Login() {
   console.log("3",session.status)
   return (
     <main>
-      <h1 className="font-marvin">Login</h1>
-      <button onClick={onSignInWithMetaMask}>Sign in with MetaMask</button>
+      <h1 className="font-marvin text-[20px] text-white border px-4 py-2 rounded-[50px] bg-black transition duration-300 ease-in-out hover:bg-white hover:border-black hover:text-black">
+      <button onClick={onSignInWithMetaMask}>Connect Wallet</button>
+      </h1>
     </main>
   );
 }
