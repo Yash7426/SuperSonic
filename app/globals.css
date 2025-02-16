@@ -16,6 +16,10 @@
     }
 }
 
+html {
+    font-family: theme("fontFamily.montserrat");
+}
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;

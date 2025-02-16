@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 import localFont from 'next/font/local';
+import { Montserrat } from "next/font/google";
 
 import { ThemeProvider } from '@/components/theme-provider';
 
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
 export const viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari
 };
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 
 const marvinVisionsBig = localFont({
   src: [
@@ -56,7 +61,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={marvinVisionsBig.variable}
+      className={`${marvinVisionsBig.variable} ${montserrat.variable}`}
       // `next-themes` injects an extra classname to the body element to avoid
       // visual flicker before hydration. Hence the `suppressHydrationWarning`
       // prop is necessary to avoid the React hydration mismatch warning.
@@ -74,7 +79,7 @@ export default async function RootLayout({
       <SessionProvider>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
           >
