@@ -8,14 +8,14 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
   swaps,
 }) => {
   return (
-    <div className="max-w-3xl mx-auto p-4 rounded-lg border border-gray-300 ">
+    <div className="w-[100%] mx-auto my-4 rounded-lg  ">
       {/* User Info */}
       <h2 className="text-xl font-marvin">PORTFOLIO</h2>
       <hr className="border-[#E4E4E4] w-[90%]" />
       <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg my-6">
-        <div className="h-12 w-12 bg-black rounded-full"></div>
-        <div>
-          <p className="font-mono text-sm font-bold">{walletId}</p>
+        <div className="w-6 h-6 md:h-12 md:w-12 bg-black rounded-full"></div>
+        <div className="w-[90%]">
+          <p className="font-mono text-sm font-bold truncate overflow-hidden whitespace-nowrap">{walletId}</p>
           <p className="text-[#2D2D2D] text-xs">Joined on {joinedDate}</p>
         </div>
       </div>
@@ -47,10 +47,11 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
                   alt={token.name}
                   width={28}
                   height={28}
+                  className="h-4 w-4 md:h-8 md:w-8"
                 />
                 <span>{token.name}</span>
               </div>
-              <div className="text-right w-[30%] flex items-center justify-between">
+              <div className="text-right w-[50%] md:w-[30%] flex items-center justify-between">
                 <p className="text-sm">{token.amount} Tokens</p>
                 <p className="text-sm font-semibold">
                   ${token.value.toFixed(2)}
@@ -88,10 +89,11 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
                   alt={tx.token.name}
                   width={28}
                   height={28}
+                  className="h-4 w-4 md:h-8 md:w-8"
                 />
                 <span className="font-bold">{tx.token.name}</span>
               </div>
-              <div className="flex justify-evenly w-[60%]">
+              <div className="flex justify-around w-[90%] md:w-[70%] xl:w-[60%] text-xs md:text-sm">
                 <p className="">{tx.type}</p>
                 <p className="">{tx.token.amount} BTC</p>
                 <p className="">${tx.token.value.toFixed(2)}</p>
@@ -111,20 +113,20 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
           />{" "}
           Swap
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {swaps.map((swap, index) => (
             <div
               key={index}
-              className="flex border-[1px] max-w-sm border-[#D4D4D4] flex-col items-center bg-[#EFEFEF] rounded-lg px-4 py-2 w-full"
+              className="flex border-[1px] border-[#D4D4D4] flex-col items-center bg-[#EFEFEF] rounded-lg px-4 py-2 w-full"
             >
               <div className="flex justify-between items-center w-full">
-                <div className="flex justify-center gap-2">
+                <div className="flex justify-center items-center gap-2">
                   <Image
                     src={swap.fromToken.logo}
                     alt={swap.fromToken.name}
                     width={32}
                     height={32}
-                    className="rounded-full"
+                    className="h-6 w-6 md:h-8 md:w-8 rounded-full"
                   />
                   <div>
                     <p className="text-sm font-bold">{swap.fromToken.name}</p>
@@ -149,6 +151,7 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
                     alt={swap.toToken.name}
                     width={32}
                     height={32}
+                    className="h-6 w-6 md:h-8 md:w-8 rounded-full"
                   />
                   <div>
                     <p className="text-sm font-bold">{swap.toToken.name}</p>

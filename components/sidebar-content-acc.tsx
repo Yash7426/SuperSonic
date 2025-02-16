@@ -113,7 +113,6 @@ export function NavMain({
                       }}
                     >
                       <PlusIcon />
-                      <span className="md:sr-only ">New Chat</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent className="!font-montserrat font-light p-2">

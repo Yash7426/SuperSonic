@@ -1,8 +1,11 @@
+import TokenHeader from '@/components/ui-token/token-header'
 import React from 'react'
 
 const page = () => {
   return (
-    <div >page</div>
+    <>
+      <TokenHeader  />
+    </>
   )
 }
 
