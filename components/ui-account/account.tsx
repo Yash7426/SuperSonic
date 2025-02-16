@@ -2,7 +2,7 @@ import ConnectedAccounts from "./connected-acc";
 
 const ProfileCard: React.FC<{ profile: ProfileProps }> = ({ profile }) => {
   return (
-    <div className="w-[90%] mx-auto my-4 rounded-lg ">
+    <div className="w-full mx-auto my-4 rounded-lg ">
       <h2 className="text-xl font-marvin">ACCOUNT</h2>
       <hr className="border-[#E4E4E4] w-[90%]" />
       <div className="flex flex-col border border-[#E4E4E4] items-center gap-3 p-4 rounded-lg my-12">

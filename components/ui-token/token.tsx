@@ -1,4 +1,6 @@
+"use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const TokenCard: React.FC<TokenCardProps> = ({
@@ -11,8 +13,11 @@ const TokenCard: React.FC<TokenCardProps> = ({
   bestBuy,
   bestSell,
 }) => {
+  const router = useRouter()
   return (
-    <div className="rounded-lg border-[1px] border-[#E4E4E4]">
+    <div onClick={()=>{
+      router.push(`/token/${name}`)
+    }} className="cursor-pointer rounded-lg border-[1px] border-[#E4E4E4]">
       <div className="flex px-4 py-2 items-center gap-2">
         <Image
           src={logo}

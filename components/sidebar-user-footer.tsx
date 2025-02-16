@@ -72,13 +72,13 @@ export function NavUser({
                 </div>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
+            {/* <DropdownMenuSeparator /> */}
+            {/* <DropdownMenuGroup>
               <DropdownMenuItem>
                 <Wallet />
                 Fund Wallet
               </DropdownMenuItem>
-            </DropdownMenuGroup>
+            </DropdownMenuGroup> */}
 
             <DropdownMenuSeparator />
             <DropdownMenuItem
@@ -90,11 +90,12 @@ export function NavUser({
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => {
-                signOut({
-                  redirectTo: "/",
-                });
-              }}
+                className="cursor-pointer"
+                onClick={() => {
+                    signOut({
+                    redirectTo: "/",
+                    });
+                }}
             >
               <LogOut />
               Disconnect Wallet

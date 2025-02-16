@@ -1,9 +1,19 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import React from "react";
+import { useParams } from "next/navigation";
+import Flow from "@/components/ui-graph-component/homeGraph";
+
+const Page = () => {
+  const { id } = useParams(); // Get the dynamic route parameter
+
+  console.log("Token ID:", id);
+
   return (
-    <div>page</div>
-  )
-}
+    <>
+      <div>Token ID: {id}</div>
+    </>
+)
+};
 
-export default page
+export default Page;
