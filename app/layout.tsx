@@ -1,17 +1,19 @@
-import type { Metadata } from 'next';
-import { Toaster } from 'sonner';
-import localFont from 'next/font/local';
+import type { Metadata } from "next";
+import { Toaster } from "sonner";
+import localFont from "next/font/local";
 import { Montserrat } from "next/font/google";
 
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from "@/components/theme-provider";
 
-import './globals.css';
-import { SessionProvider } from 'next-auth/react';
+import "./globals.css";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://super-sonic-6srua1ga3-yash7426s-projects.vercel.app/'),
-  title: 'Next.js Chatbot Template',
-  description: 'Next.js chatbot template using the AI SDK.',
+  metadataBase: new URL(
+    "https://super-sonic-6srua1ga3-yash7426s-projects.vercel.app/"
+  ),
+  title: "Next.js Chatbot Template",
+  description: "Next.js chatbot template using the AI SDK.",
 };
 
 export const viewport = {
@@ -25,16 +27,16 @@ const montserrat = Montserrat({
 const marvinVisionsBig = localFont({
   src: [
     {
-      path: '../public/fonts/MarvinVisionsBig-Bold.woff2',
-      weight: '400', // adjust if you have other weights
-      style: 'normal',
+      path: "../public/fonts/MarvinVisionsBig-Bold.woff2",
+      weight: "400", // adjust if you have other weights
+      style: "normal",
     },
   ],
-  variable: '--font-marvin', // creates a CSS variable for the font
+  variable: "--font-marvin", // creates a CSS variable for the font
 });
 
-const LIGHT_THEME_COLOR = 'hsl(0 0% 100%)';
-const DARK_THEME_COLOR = 'hsl(240deg 10% 3.92%)';
+const LIGHT_THEME_COLOR = "hsl(0 0% 100%)";
+const DARK_THEME_COLOR = "hsl(240deg 10% 3.92%)";
 const THEME_COLOR_SCRIPT = `\
 (function() {
   var html = document.documentElement;
@@ -76,17 +78,17 @@ export default async function RootLayout({
         />
       </head>
       <body className="antialiased">
-      <SessionProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
           >
-          <Toaster position="top-center" />
-          {children}
-        </ThemeProvider>
-      </SessionProvider>
+            <Toaster position="top-center" />
+            {children}
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
