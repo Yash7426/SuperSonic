@@ -60,7 +60,7 @@ const CandlestickChart = ({ coinId }: CandlestickChartProps) => {
     };
   }, [coinId]);
 
-  return <div ref={chartContainerRef} className="w-full h-[300px]" />;
+  return <div ref={chartContainerRef} className="w-full h-[300px] flex items-center" />;
 };
 
 export default CandlestickChart;

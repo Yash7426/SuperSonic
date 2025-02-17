@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Script from "next/script";
 import axios from "axios";
 
 interface Tweet {
@@ -35,23 +36,18 @@ const LatestTweets = ({ query }: LatestTweetsProps) => {
   }, [query]);
 
   return (
-    <div className="p-4 bg-gray-900 text-white rounded-lg border border-gray-700">
-      <h2 className="text-lg font-semibold">Latest Tweets on {query}</h2>
-      {loading ? (
-        <p>Loading tweets...</p>
-      ) : error ? (
-        <p className="text-red-500">{error}</p>
-      ) : (
-        <ul className="mt-2 space-y-2">
-          {tweets.map((tweet, index) => (
-            <li key={index} className="text-sm border-b border-gray-700 pb-2">
-              <span className="text-blue-400">{tweet.user}</span>: {tweet.content}
-              <p className="text-xs text-gray-500">{tweet.timestamp}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <>
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+      />
+      <a
+        data-height="243"
+        className="twitter-timeline"
+        href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw"
+      >
+        Tweets by XDevelopers
+      </a>
+    </>
   );
 };
 

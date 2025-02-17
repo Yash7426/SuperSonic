@@ -2,6 +2,12 @@
 import { signIn, useSession } from "next-auth/react";
 import { ethers } from "ethers";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 async function onSignInWithMetaMask() {
   try {
     if (!window.ethereum) {
