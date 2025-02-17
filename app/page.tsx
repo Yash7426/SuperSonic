@@ -10,6 +10,7 @@ import Features from "@/components/ui-home/features";
 import Team from "@/components/ui-home/team";
 import Footer from "@/components/ui-home/footer";
 import Butn from "@/components/ui-home/butn";
+import Landing from "@/components/ui-home/landing";
 declare global {
   interface Window {
     ethereum?: any;
@@ -44,10 +45,7 @@ export default function Home() {
     // mayank
     
     <main className="w-full">
-      <div className="h-screen flex flex-col gap-[20vh]">
-        <HomeNav/> 
-        <LandingSec/>
-      </div>
+      <Landing/>
       <div className="h-[35vh]">
           <Powered/>
       </div>
@@ -60,7 +58,7 @@ export default function Home() {
       <div className="h-[110vh] ">
         <Features />
       </div>
-      <div className="h-screen">
+      <div className="h-[110vh]">
         <Team/>
       </div>
       <div className="h-[120vh] bg-[#111111] flex flex-col items-center justify-center gap-[15vh] rounded-b-[80px]">
@@ -71,11 +69,9 @@ export default function Home() {
         </div>
          <div>
           <Butn/>
-         {/* <button className='font-marvin text-[30px] text-white px-4 py-2 rounded-[50px] bg-[#8902F4] w-[200px] text-center hover:bg-white hover:text-black transition duration-300 ease-in-out'>GET STARTED</button> */}
          </div>
       </div>
       <Footer/>
-      {/* <Login /> */}
     </main>
     // ye niche vala commented code mt rehnde dena mayank
     // <>

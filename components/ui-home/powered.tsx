@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Powered = () => {
   return (
     <>
-    <div className='flex flex-col justify-center gap-8'>
+    <div className='flex flex-col justify-center gap-10'>
         <div className='font-marvin text-[40px] text-black text-center '>Powered By</div>
         <div className='flex flex-row justify-between px-10'>
             <Image
