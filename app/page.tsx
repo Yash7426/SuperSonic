@@ -1,47 +1,108 @@
-import HomeNav from "@/components/ui-home/homeNav";
-import LandingSec from "@/components/ui-home/landingSec";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
+import Lenis from "lenis";
 import Powered from "@/components/ui-home/powered";
 import About from "@/components/ui-home/about";
 import Features from "@/components/ui-home/features";
 import Team from "@/components/ui-home/team";
 import Footer from "@/components/ui-home/footer";
-import Butn from "@/components/ui-home/butn";
 import Landing from "@/components/ui-home/landing";
-declare global {
-  interface Window {
-    ethereum?: any;
-  }
-}
+import Big from "@/components/ui-home/big";
+import Cta from "@/components/ui-home/cta";
+
+type SectionComponent = React.FC<{ scrollYProgress: any }>;
+
+const sections: SectionComponent[] = [Landing, Powered, Big, About, Features, Team, Cta, Footer];
+
 export default function Home() {
+  const container = useRef<HTMLDivElement | null>(null);
+  const [currentSection, setCurrentSection] = useState<number>(0);
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end start"],
+  });
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
+  const scrollToSection = (sectionIndex: number) => {
+    const sectionElement = container.current?.children[sectionIndex] as HTMLElement;
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = (e: WheelEvent) => {
+    if (isScrolling) return;
+
+    setIsScrolling(true);
+    const sectionHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+
+    if (e.deltaY > 0) {
+      // Scroll Down
+      if (scrollPosition + sectionHeight >= currentSection * sectionHeight) {
+        const nextSection = Math.min(currentSection + 1, sections.length - 1);
+        setCurrentSection(nextSection);
+        scrollToSection(nextSection);
+      }
+    } else {
+      // Scroll Up
+      if (scrollPosition <= currentSection * sectionHeight) {
+        const prevSection = Math.max(currentSection - 1, 0);
+        setCurrentSection(prevSection);
+        scrollToSection(prevSection);
+      }
+    }
+
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 1000); // Add a delay to prevent rapid scrolling
+  };
+
+  useEffect(() => {
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [currentSection, isScrolling]);
+
   return (
-    <main className="w-full">
-      <Landing/>
-      <div className="h-[35vh]">
-          <Powered/>
-      </div>
-      <div className="h-[120vh] bg-[#111111] text-white text-[100px] leading-[110px] flex font-marvin justify-center text-center items-center">
-        <h1 className="w-[60%]">The Future Belongs to Those Who Predicts It <span className="text-[#8902F4]">First.</span></h1>
-      </div>
-      <div className="h-[100vh]">
-        <About/>
-      </div>
-      <div className="h-[110vh] ">
-        <Features />
-      </div>
-      <div className="h-[110vh]">
-        <Team/>
-      </div>
-      <div className="h-[120vh] bg-[#111111] flex flex-col items-center justify-center gap-[15vh] rounded-b-[80px]">
-        <div className="font-marvin text-[100px] text-white text-center pt-[15vh] flex flex-col items-center leading-[120px]"> 
-          <h1 className="flex flex-row">Trade smarter<span className="text-[#8902F4]">.</span></h1>
-          <h1 className="flex flex-row">Move faster<span className="text-[#8902F4]">.</span></h1>
-          <h1 className="flex flex-row">Stay ahead<span className="text-[#8902F4]">.</span></h1>
-        </div>
-         <div>
-          <Butn/>
-         </div>
-      </div>
-      <Footer/>
+    <main ref={container} className="w-full relative bg-white">
+      {sections.map((Section, index) => (
+        <ParallaxSection key={index} scrollYProgress={scrollYProgress}>
+          <Section scrollYProgress={scrollYProgress} /> {/* Pass scrollYProgress as prop */}
+        </ParallaxSection>
+      ))}
     </main>
   );
 }
+
+interface ParallaxSectionProps {
+  children: React.ReactNode;
+  scrollYProgress: any;
+}
+
+const ParallaxSection: React.FC<ParallaxSectionProps> = ({ children, scrollYProgress }) => {
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+
+  return (
+    <motion.div style={{}} className="sticky top-[-70px] w-full bg-white">
+      {children}
+    </motion.div>
+  );
+};

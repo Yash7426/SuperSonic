@@ -334,7 +334,7 @@ interface AgentNodeProps {
 }
 const AgentNode = ({ data }: AgentNodeProps) => {
   return (
-    <div className="p-2 h-32 w-32 shadow-lg rounded-full bg-neutral-100 dark:bg-neutral-800 border border-brand-600 dark:border-brand-600">
+    <div className="p-2 h-32 w-32 shadow-lg rounded-full bg-[#CAA0EB] dark:bg-neutral-800 border border-brand-600 dark:border-brand-600">
       <Handle type="source" position={Position.Right} className="" />
       <div className="flex flex-col items-center justify-center h-full w-full text-neutral-800 dark:text-white">
         <span className="text-sm font-semibold text-center">{data.name}</span>
@@ -355,7 +355,7 @@ interface CentralNodeProps {
 const proOptions: ProOptions = { account: "paid-pro", hideAttribution: true };
 const CentralNode = ({ data }: CentralNodeProps) => {
   return (
-    <div className="p-8 rounded-full border-2 border-brand-600 bg-[#f6ebd4] dark:bg-[#4f3e17] z-[100] shadow-brand-600/40 shadow-lg">
+    <div className="p-8 rounded-full border-2 border-brand-600 bg-[#8902F4] text-white font-marvin text-[20px] dark:bg-[#4f3e17] z-[100] shadow-brand-600/40 shadow-lg">
       <Handle
         type="source"
         position={Position.Right}
@@ -372,7 +372,7 @@ type ExampleProps = {
   strength?: number;
   distance?: number;
 };
-const defaultEdgeOptions = { style: { stroke: "#d19900", strokeWidth: 2 } };
+const defaultEdgeOptions = { style: { stroke: "#8902F4", strokeWidth: 2 } };
 const nodeTypes = {
   central: CentralNode,
   agent: AgentNode,
@@ -404,7 +404,7 @@ function Flow({ strength = -500, distance = 150 }: ExampleProps = {}) {
     [setEdges]
   );
   return (
-    <div className="h-full w-[80%] mx-auto">
+    <div className="h-[70vh] w-[60%] mx-auto border rounded-[30px] ">
       <ReactFlow
         nodes={nodes}
         edges={edges}
