@@ -112,7 +112,7 @@ const Tool = ({
           onHoverEnd={() => {
             if (selectedTool !== description) setIsHovered(false);
           }}
-          onKeyDown={(event) => {
+          onKeyDown={(event:any) => {
             if (event.key === 'Enter') {
               handleSelect();
             }
