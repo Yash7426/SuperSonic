@@ -27,7 +27,7 @@ const TokenDetails = ({
         <span className="text-xs md:text-xl font-bold">${price.toFixed(4)}</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 py-2">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-2 py-2">
         <div className="w-full">
           <h3 className=" font-marvin sm:pl-4">BEST BUY</h3>
           <div className="flex flex-row justify-between items-center border border-[#E4E4E4] py-2 px-4 rounded-xl my-1">

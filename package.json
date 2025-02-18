@@ -65,6 +65,7 @@
     "lightweight-charts": "^5.0.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.446.0",
+    "motion": "^12.4.3",
     "nanoid": "^5.0.8",
     "next": "15.0.3-canary.2",
     "next-auth": "5.0.0-beta.25",
@@ -91,7 +92,7 @@
     "server-only": "^0.0.1",
     "sonner": "^1.5.0",
     "swr": "^2.2.5",
-    "tailwind-merge": "^2.5.2",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8"

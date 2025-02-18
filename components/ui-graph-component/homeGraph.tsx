@@ -419,8 +419,8 @@ function Flow({ strength = -500, distance = 150 }: ExampleProps = {}) {
         nodeOrigin={nodeOrigin}
         defaultEdgeOptions={defaultEdgeOptions}
         panOnDrag={true}
-        // zoomOnDoubleClick={false}
-        // zoomOnScroll={false}
+        zoomOnDoubleClick={false}
+        zoomOnScroll={false}
         fitView
       >
         <Background/>

@@ -7,6 +7,7 @@ import CandlestickChart from "@/components/ui-token_id/token_chart";
 import LatestTweets from "@/components/ui-token_id/token_tweets";
 import SentimentMeter from "@/components/ui-token_id/token_sentiment";
 import TokenDetails from "@/components/ui-token_id/token_details";
+import TradeChatTabs from "@/components/ui-token_id/token_trade";
 
 const Page = () => {
   const { id }: { id: string } = useParams(); // Get the dynamic route parameter
@@ -29,13 +30,13 @@ const Page = () => {
   console.log("Token ID:", id);
 
   return (
-    <div className="mx-4 md:mx-8 my-2 rounded-lg flex gap-x-4 flex-col xl:flex-row">
-      <div className="w-full xl:w-[70%] flex flex-col items-center">
+    <div className="mx-4 md:mx-8 my-2 rounded-lg flex gap-x-4 flex-col xl:flex-row h-screen overflow-y-scroll">
+      <div className="w-[65%] lg:w-[70%] flex flex-col items-center">
         <TokenDetails {...t} />
         <div className="border border-[#E4E4E4] rounded-md p-4 w-full">
           <CandlestickChart coinId={id} />
         </div>
-        <div className="py-1 w-full flex flex-col xl:flex-row justify-center items-center xl:gap-x-4">
+        <div className="py-1 w-full flex flex-col gap-y-2 xl:flex-row justify-center items-center xl:gap-x-4">
           <div className="w-full xl:w-[48%]">
             <SentimentMeter value={0.3} />
           </div>
@@ -44,19 +45,8 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="w-full xl:w-[30%] flex flex-col items-center">
-        {/* <TokenDetails {...t} />
-        <div className=" p-4 w-full">
-          <CandlestickChart coinId={id} />
-        </div>
-        <div className="flex flex-col">
-          <div className="flex justify-center">
-            <SentimentMeter value={43} />
-          </div>
-          <div className="mt-6">
-            <LatestTweets query={id} />
-          </div>
-        </div> */}
+      <div className="w-[30%]">
+        <TradeChatTabs />
       </div>
     </div>
   );

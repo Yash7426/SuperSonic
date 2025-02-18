@@ -53,20 +53,20 @@ const TokenCard: React.FC<TokenCardProps> = ({
       </div>
 
       {/* Profit Section */}
-      <div className="bg-[#8902F4] px-4 py-2 text-white flex justify-between">
+      {/* <div className="bg-[#8902F4] px-4 py-2 text-white flex justify-between">
         <span className="font-semibold">Profit per token:</span>
         <span className="font-bold">${profitPerToken.toFixed(4)}</span>
-      </div>
+      </div> */}
 
       {/* Best Buy & Sell */}
-      <div className="flex px-4 py-2 justify-between text-sm">
+      {/* <div className="flex px-4 py-2 justify-between text-sm">
         <p>
           Best Buy: <span className="font-bold">{bestBuy}</span>
         </p>
         <p>
           Best Sell: <span className="font-bold">{bestSell}</span>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

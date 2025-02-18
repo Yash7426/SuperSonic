@@ -17,6 +17,7 @@ async function onSignInWithMetaMask() {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const publicAddress = await signer.getAddress();
+    const balance = await provider.getBalance(publicAddress);
 
     const response = await fetch("/api/crypto", {
       method: "POST",

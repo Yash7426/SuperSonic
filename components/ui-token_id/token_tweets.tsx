@@ -14,32 +14,9 @@ interface LatestTweetsProps {
 }
 
 const LatestTweets = ({ query }: LatestTweetsProps) => {
-  const [tweets, setTweets] = useState<Tweet[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (!query) return;
-
-    const fetchTweets = async () => {
-      try {
-        const response = await axios.get(`/api/tweets?q=${query}`);
-        setTweets(response.data);
-      } catch (error) {
-        setError("Failed to load tweets.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTweets();
-  }, [query]);
-
   return (
     <>
-      <Script
-        src="https://platform.twitter.com/widgets.js"
-      />
+      <Script src="https://platform.twitter.com/widgets.js" />
       <a
         data-height="243"
         className="twitter-timeline"
