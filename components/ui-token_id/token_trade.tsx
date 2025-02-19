@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import SelectDropdown from "./token_dexlist";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
@@ -10,17 +10,38 @@ import CustomModal from "../ui-modal-component/customModal";
 import { useParams } from "next/navigation";
 
 export default function TradeChatTabs() {
-  const { id:coinId }: { id: string } = useParams();
+  const { id: coinId }: { id: string } = useParams();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen2, setIsModalOpen2] = useState<boolean>(false);
+  const [isModalOpen3, setIsModalOpen3] = useState<boolean>(false);
+
   const [action, setAction] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>("uniswap");
+  const [selectedValue2, setSelectedValue2] = useState<string>("uniswap");
+  
 
   const SetModalOpen = (act: string) => {
     setIsModalOpen(true);
     setAction(act);
   };
+  const SetModalOpen2 = (act: string) => {
+    setIsModalOpen2(true);
+    setAction(act);
+  };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+  };
+  const handleModalClose2 = () => {
+    setIsModalOpen2(false);
+  };
+  const SetModalOpen3 = (act: string) => {
+    setIsModalOpen3(true);
+    setAction(act);
+  };
+
+  const handleModalClose3 = () => {
+    setIsModalOpen3(false);
   };
   const [activeTab, setActiveTab] = useState<"trade" | "chat">("trade");
   const id = generateUUID();
@@ -50,16 +71,34 @@ export default function TradeChatTabs() {
         </Button>
       </div>
       <CustomModal
+        dex={selectedValue.toLowerCase()}
         coin={coinId}
         action={action}
         isOpen={isModalOpen}
         onClose={handleModalClose}
       />
+      <CustomModal
+        dex={selectedValue2.toLowerCase()}
+        coin={coinId}
+        action={action}
+        isOpen={isModalOpen2}
+        onClose={handleModalClose2}
+      />
+      <CustomModal
+        dex={"debridge"}
+        coin={coinId}
+        action={action}
+        isOpen={isModalOpen3}
+        onClose={handleModalClose3}
+      />
       {activeTab === "trade" ? (
         <div className="text-[#FFFFFF] mt-8 w-full max-w-sm space-y-6">
           <div>
             <h2 className="text-xl pl-2 font-marvin mb-2">SELL</h2>
-            <SelectDropdown />
+            <SelectDropdown
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+            />
             <Button
               onClick={() => {
                 SetModalOpen("Sell");
@@ -72,10 +111,13 @@ export default function TradeChatTabs() {
           <hr className="w-[90%] mx-auto border-[#2D2D2D]" />
           <div>
             <h2 className="text-xl pl-2 font-marvin mb-2">BUY</h2>
-            <SelectDropdown />
+            <SelectDropdown
+              selectedValue={selectedValue2}
+              setSelectedValue={setSelectedValue2}
+            />
             <Button
               onClick={() => {
-                SetModalOpen("Buy");
+                SetModalOpen2("Buy");
               }}
               className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700"
             >
@@ -96,7 +138,7 @@ export default function TradeChatTabs() {
             </div>
             <Button
               onClick={() => {
-                SetModalOpen("Swap");
+                SetModalOpen3("Swap");
               }}
               className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700"
             >

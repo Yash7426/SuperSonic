@@ -13,15 +13,19 @@ const About: React.FC<AboutProps> = ({ scrollYProgress }) => {
   return (
     <motion.div
       // style={{ scale, rotate }}
-      className="h-screen bg-white flex flex-col pb-[2vh] pt-[8vh] px-[5vw] gap-[4vh]"
+      className="h-screen bg-white flex pb-[2vh] pt-[8vh] px-[5vw] gap-6"
     >
-        <h1 className="font-marvin text-[80px] p-0 ">About Us</h1>
-      <div className="flex flex-row">
-        <div className='text-[16px] font-semibold w-[30%]'>
-            At SUPERSONIC, we revolutionize decentralized finance with AI-powered predictive arbitrage. 
-            By integrating advanced AI analytics, social sentiment tracking, and high-speed execution on the Sonic blockchain, 
-            we ensure seamless, efficient, and fully decentralized trading—eliminating middlemen and maximizing returns.
-          </div>
+      <div className="w-[35%]">
+        <h1 className="font-marvin text-[80px]">About Us</h1>
+        <div className="text-[16px] font-semibold">
+          At SUPERSONIC, we revolutionize decentralized finance with AI-powered
+          predictive arbitrage. By integrating advanced AI analytics, social
+          sentiment tracking, and high-speed execution on the Sonic blockchain,
+          we ensure seamless, efficient, and fully decentralized
+          trading—eliminating middlemen and maximizing returns.
+        </div>
+      </div>
+      <div className="w-full h-full">
         <FlowWithProvider />
       </div>
     </motion.div>

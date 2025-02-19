@@ -27,8 +27,8 @@ const sections: SectionComponent[] = [
 
 export default function Home() {
   const container = useRef<HTMLDivElement | null>(null);
-  const [currentSection, setCurrentSection] = useState<number>(0);
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const currentSection = useRef(0);
+  const isScrolling = useRef(false);
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -55,48 +55,49 @@ export default function Home() {
     }
   };
 
-  const handleScroll = (e: WheelEvent) => {
-    if (isScrolling) return;
-
-    setIsScrolling(true);
-    const sectionHeight = window.innerHeight;
-    const scrollPosition = window.scrollY;
-
-    if (e.deltaY > 0) {
-      // Scroll Down
-      if (scrollPosition + sectionHeight >= currentSection * sectionHeight) {
-        const nextSection = Math.min(currentSection + 1, sections.length - 1);
-        setCurrentSection(nextSection);
-        scrollToSection(nextSection);
-      }
-    } else {
-      // Scroll Up
-      if (scrollPosition <= currentSection * sectionHeight) {
-        const prevSection = Math.max(currentSection - 1, 0);
-        setCurrentSection(prevSection);
-        scrollToSection(prevSection);
-      }
-    }
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 1000); // Add a delay to prevent rapid scrolling
-  };
-
   useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      if (isScrolling.current) return;
+
+      isScrolling.current = true;
+      requestAnimationFrame(() => {
+        const sectionHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+
+        if (e.deltaY > 0) {
+          // Scroll Down
+          if (scrollPosition + sectionHeight >= currentSection.current * sectionHeight) {
+            const nextSection = Math.min(currentSection.current + 1, sections.length - 1);
+            currentSection.current = nextSection;
+            scrollToSection(nextSection);
+          }
+        } else {
+          // Scroll Up
+          if (scrollPosition <= currentSection.current * sectionHeight) {
+            const prevSection = Math.max(currentSection.current - 1, 0);
+            currentSection.current = prevSection;
+            scrollToSection(prevSection);
+          }
+        }
+
+        setTimeout(() => {
+          isScrolling.current = false;
+        }, 1000); // Prevent rapid scrolling
+      });
+    };
+
     window.addEventListener("wheel", handleScroll, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [currentSection, isScrolling]);
+  }, []);
 
   return (
     <main ref={container} className="w-full relative bg-white">
       {sections.map((Section, index) => (
         <ParallaxSection key={index} scrollYProgress={scrollYProgress}>
-          <Section scrollYProgress={scrollYProgress} />{" "}
-          {/* Pass scrollYProgress as prop */}
+          <Section scrollYProgress={scrollYProgress} />
         </ParallaxSection>
       ))}
     </main>
@@ -116,7 +117,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
-    <motion.div style={{}} className="sticky top-[-70px] w-full bg-white">
+    <motion.div className="sticky top-[-70px] w-full bg-white">
       {children}
     </motion.div>
   );

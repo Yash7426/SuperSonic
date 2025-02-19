@@ -10,10 +10,12 @@ import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://super-sonic-6srua1ga3-yash7426s-projects.vercel.app/"
+    "https://super-sonic-eta.vercel.app/"
   ),
-  title: "Next.js Chatbot Template",
-  description: "Next.js chatbot template using the AI SDK.",
+  title: "SuperSonic",
+  description: "AI powered arbitrage platform built on SONIC",
+  // change the logo here
+  icons : "/images/sonic.svg"
 };
 
 export const viewport = {
@@ -64,10 +66,6 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`${marvinVisionsBig.variable} ${montserrat.variable}`}
-      // `next-themes` injects an extra classname to the body element to avoid
-      // visual flicker before hydration. Hence the `suppressHydrationWarning`
-      // prop is necessary to avoid the React hydration mismatch warning.
-      // https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
       suppressHydrationWarning
     >
       <head>

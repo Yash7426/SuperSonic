@@ -1,61 +1,57 @@
-"use client";
-import { useEffect, useState } from "react";
-import Script from "next/script";
+import { useEffect, useRef } from "react";
 
+// Define the deBridge type on the window object
 declare global {
   interface Window {
     deBridge?: {
-      widget: (options: Record<string, any>) => void;
+      widget: (options: {
+        v: string;
+        element: string;
+        width: string;
+        height: string;
+        inputChain: number;
+        outputChain: number;
+        mode: string;
+        theme: string;
+      }) => void;
     };
   }
 }
 
-type DeBridgeWidgetProps = {
-  coin: string;
-  action: string;
-};
 
-export default function DeBridgeWidget({ coin, action }: DeBridgeWidgetProps) {
-  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+export default function DeBridgeWidget() {
+  const isScriptLoaded = useRef<boolean>(false);
 
-  console.log(coin, action);
   useEffect(() => {
-    if (isScriptLoaded && window.deBridge) {
-      window.deBridge.widget({
-        v: "1",
-        element: "debridgeWidget",
-        title: "",
-        description: "",
-        width: "450",
-        height: "636",
-        r: null,
-        supportedChains: JSON.stringify({
-          inputChains: { 1: "all", 10: "all", 56: "all", 137: "all" },
-          outputChains: { 1: "all", 10: "all", 56: "all", 137: "all" },
-        }),
-        inputChain: 1,
-        outputChain: 146,
-        inputCurrency: coin,
-        outputCurrency: coin,
-        address: "",
-        showSwapTransfer: action === "swap",
-        amount: "",
-        outputAmount: "",
-        lang: "en",
-        mode: "deswap",
-        theme: "dark",
-      });
-    }
-  }, [isScriptLoaded, coin, action]);
+    if (!isScriptLoaded.current) {
+      isScriptLoaded.current = true;
 
-  return (
-    <>
-      <Script
-        src="https://app.debridge.finance/assets/scripts/widget.js"
-        strategy="lazyOnload"
-        onLoad={() => setIsScriptLoaded(true)}
-      />
-      <div id="debridgeWidget" />
-    </>
-  );
+      const script = document.createElement("script");
+      script.src = "https://app.debridge.finance/assets/scripts/widget.js";
+      script.async = true;
+
+      script.onload = () => {
+        if (window.deBridge) {
+          window.deBridge.widget({
+            v: "1",
+            element: "debridgeWidget",
+            width: "450",
+            height:"100%",
+            inputChain: 1,
+            outputChain: 146,
+            mode: "deswap",
+            theme: "dark",
+          });
+        }
+      };
+
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, []);
+
+  return <div id="debridgeWidget" className="h-[100%]"></div>;
 }

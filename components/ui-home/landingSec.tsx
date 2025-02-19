@@ -1,13 +1,14 @@
-
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 const cryptoIcons = [
   'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
-  'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
-  'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
-  'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
-  'https://cryptologos.cc/logos/bitcoin-btc-logo.png'
+  'https://cryptologos.cc/logos/ethereum-eth-logo.png',
+  'https://cryptologos.cc/logos/dogecoin-doge-logo.png',
+  'https://cryptologos.cc/logos/xrp-xrp-logo.png',
+  '/images/sonic-logo.svg'
 ];
 
 const cornerPositions = [
@@ -37,6 +38,7 @@ const getFloatingAnimation = (index:number) => {
 
 
 const LandingSec = () => {
+  const router = useRouter()
   return (
     <div className="relative overflow-y-visible h-screen">
       {/* Floating Crypto Icons */}
@@ -47,7 +49,7 @@ const LandingSec = () => {
           style={getPosition(index)}
           animate={getFloatingAnimation(index)}
         >
-          <Image src={icon} alt="crypto-icon" width={200} height={200} className='w-12 h-12 md:w-24 md:h-24' />
+          <Image src={icon} alt="crypto-icon" width={200} height={200} className='w-12 h-12 md:w-24 md:h-24 rounded-full ' />
         </motion.div>
       ))}
       
@@ -65,7 +67,9 @@ const LandingSec = () => {
         <p className='w-[35%] text-center'>
           Harness the power of AI-driven predictions and blockchain efficiency to capture profitable arbitrage opportunities
         </p>
-        <h1 className='font-marvin text-[30px] text-white border px-4 py-2 rounded-[50px] bg-black w-[200px] text-center hover:bg-white hover:border-black hover:text-black transition duration-300 ease-in-out'>
+        <h1 onClick={()=>{
+          router.push("/chat")
+        }} className='cursor-pointer font-marvin text-[30px] text-white border px-4 py-2 rounded-[50px] bg-black w-[200px] text-center hover:bg-white hover:border-black hover:text-black transition duration-300 ease-in-out'>
           GET STARTED
         </h1>
       </div>

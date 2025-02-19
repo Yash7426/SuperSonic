@@ -55,7 +55,7 @@ const Page = () => {
   // if (loading) return <p>Loading...</p>;
   // if (!tokenData) return <p>Failed to fetch data</p>;
 
-    const t = {
+  const t = {
     name: "Bitcoin",
     logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
     price: 48250.75,

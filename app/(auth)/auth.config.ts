@@ -3,7 +3,7 @@ import type { NextAuthConfig } from "next-auth";
 export const authConfig = {
   pages: {
     signIn: "/",
-    newUser: "/",
+    newUser: "/", 
   },
   providers: [
   ],
@@ -32,6 +32,6 @@ export const authConfig = {
       }
 
       return true;
-    },
+    }
   },
 } satisfies NextAuthConfig;

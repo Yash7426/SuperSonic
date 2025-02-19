@@ -5,33 +5,22 @@ import StakeCard from "./stake-token";
 import { ethers, BrowserProvider, Contract } from "ethers";
 import { abi, address } from "@/contracts_abi/Staking.json";
 import { toast } from "sonner";
+import { abi1, address1 } from "@/contracts_abi/Staking1.json";
 
 const StakeHeader: React.FC = () => {
   const stakeTokens = [
     {
-      icon: "/images/bitcoin-logo.svg",
-      name: "SONIC STAKE",
-      symbol: "sSol",
-      change: "+14.61%",
+      icon: "https://assets.coingecko.com/coins/images/52937/standard/token-beets-staked-sonic.png?1734712659",
+      name: "Beets Staked Sonic",
+      symbol: "stS",
+      change: "+18.1%",
     },
     {
-      icon: "/images/bitcoin-logo.svg",
-      name: "LIGHTNING COIN",
-      symbol: "LTC",
-      change: "-3.25%",
-    },
-    {
-      icon: "/images/bitcoin-logo.svg",
-      name: "MOON TOKEN",
-      symbol: "MOON",
-      change: "+7.89%",
-    },
-    {
-      icon: "/images/bitcoin-logo.svg",
-      name: "DIAMOND HANDS",
-      symbol: "DMD",
-      change: "+2.45%",
-    },
+      icon: "https://assets.coingecko.com/coins/images/53773/standard/os-256x256.png?1737271726",
+      name: "Origin Sonic",
+      symbol: "OS",
+      change: "+48.4%",
+    }
   ];
 
   const [selectedToken, setSelectedToken] = useState<string | null>(null);
@@ -75,10 +64,39 @@ const StakeHeader: React.FC = () => {
     }
   }
 
+  async function enter1() {
+    try {
+      if (window.ethereum) {
+        const provider = new BrowserProvider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = await provider.getSigner();
+        const contract = new Contract(address1, abi1, signer);
+
+        const toastId = toast.loading("Staking in progress...");
+        
+        const transactionResponse = await contract.stake({
+          value: ethers.parseEther(amount),
+        });
+
+        await listenForTransactionMined(transactionResponse, provider);
+        
+        toast.success("Successfully staked token.", { id: toastId });
+        setAmount("0");
+        setSelectedToken(null);
+      }
+    } catch (e) {
+      console.error(e);
+      toast.error("Staking failed.");
+    }
+  }
+
   const handleStake = () => {
     if (selectedToken && amount) {
-      if(selectedToken==="SONIC STAKE"){
+      if(selectedToken==="Beets Staked Sonic"){
         enter()
+      }
+      else if(selectedToken=="Origin Sonic"){
+        enter1()
       }
     } 
   };

@@ -164,7 +164,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
     <Sidebar className="group-data-[side=left]:border-r-0 ">
       <SidebarHeader>
         <SidebarMenu>
-          <div className="py-3 border-b border-[#2D2D2D] mx-auto flex flex-row justify-between items-center">
+          <div className="py-3 border-b border-[#2D2D2D] text-[#FFFFFF] mx-auto flex flex-row justify-between items-center">
             <Link
               href="/"
               onClick={() => {
@@ -173,7 +173,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               className="flex flex-row gap-3 items-center"
             >
               <span className=" text-3xl font-marvin px-2 hover:text-[#bcbbbb] rounded-md cursor-pointer">
-                SONICARB
+                SUPERSONIC
               </span>
             </Link>
             {/* Code for adding new chat */}
@@ -210,7 +210,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
         )}
         <div className="py-3 border-t border-[#2D2D2D] mx-auto flex flex-row justify-between items-center">
           <Link
-            href="/"
+            href="https://x.com/Super_Sonic_org"
             onClick={() => {
               setOpenMobile(false);
             }}
