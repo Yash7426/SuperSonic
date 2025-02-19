@@ -31,14 +31,17 @@ import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { NavUser } from "@/components/sidebar-user-footer";
 import { NavMain } from "@/components/sidebar-content-acc";
+import { useSession } from "next-auth/react";
 
 export function AppSidebar({ user }: { user: User | undefined }) {
   const router = useRouter();
   const { setOpenMobile } = useSidebar();
+  const {data:session} = useSession()
+  console.log(session);
   const data = {
     user: {
-      address:"Gwdcbwiecbeiucbicvcui4r23u4rb24rcbrc7rb4rb84r7b",
-      balance:"0.0000"
+      address:(session?.user as any)?.publicAddress,
+      balance:(session?.user as any)?.balance
     },
     teams: [
       {

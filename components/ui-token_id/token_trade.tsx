@@ -8,8 +8,22 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { generateUUID } from "@/lib/utils";
 import { DataStreamHandler } from "@/components/data-stream-handler";
 import { TokenChat } from "./token_chat";
+import CustomModal from "../ui-modal-component/customModal";
+import { useParams } from "next/navigation";
 
 export default function TradeChatTabs() {
+  const { id:coinId }: { id: string } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [action, setAction] = useState<string>("");
+
+  const SetModalOpen = (act: string) => {
+    setIsModalOpen(true);
+    setAction(act);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   const [activeTab, setActiveTab] = useState<"trade" | "chat">("trade");
   const id = generateUUID();
   return (
@@ -27,21 +41,33 @@ export default function TradeChatTabs() {
           TRADE
         </Button>
         <Button
-          className={`font-marvin w-[50%] text-center py-[26px] text-md ${
-            activeTab === "chat" ? "bg-[#8902F4]" : "bg-transparent"
+          className={`cursor-pointer font-marvin w-[50%] text-center py-[26px] text-md ${
+            activeTab === "chat"
+              ? "bg-[#8902F4] hover:bg-[#8902F4]"
+              : "bg-transparent hover:bg-transparent"
           }`}
           onClick={() => setActiveTab("chat")}
         >
           CHAT
         </Button>
       </div>
-
+      <CustomModal
+        coin={coinId}
+        action={action}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
       {activeTab === "trade" ? (
         <div className="text-[#FFFFFF] mt-8 w-full max-w-sm space-y-6">
           <div>
             <h2 className="text-xl pl-2 font-marvin mb-2">SELL</h2>
             <SelectDropdown />
-            <Button className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700">
+            <Button
+              onClick={() => {
+                SetModalOpen("Sell");
+              }}
+              className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700"
+            >
               SELL
             </Button>
           </div>
@@ -49,7 +75,12 @@ export default function TradeChatTabs() {
           <div>
             <h2 className="text-xl pl-2 font-marvin mb-2">BUY</h2>
             <SelectDropdown />
-            <Button className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700">
+            <Button
+              onClick={() => {
+                SetModalOpen("Buy");
+              }}
+              className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700"
+            >
               BUY
             </Button>
           </div>
@@ -65,7 +96,12 @@ export default function TradeChatTabs() {
                 </span>
               </div>
             </div>
-            <Button className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700">
+            <Button
+              onClick={() => {
+                SetModalOpen("Swap");
+              }}
+              className="bg-[#8902F4] cursor-pointer mt-2 w-full rounded-md py-2 font-bold hover:bg-purple-700"
+            >
               SWAP
             </Button>
           </div>

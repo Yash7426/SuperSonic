@@ -1,11 +1,13 @@
-
+"use client"
 import PortfolioCard from '@/components/ui-portfolio/portfolio';
+import { useSession } from 'next-auth/react';
 import React from 'react'
 
 const page = () => {
+  const { data: session } = useSession();
     const portfolioData = {
-    walletId: "G4FHvz5DCwHzDViPxhUx97Yu6isKEZgSRociADyhZCVF",
-    joinedDate: "11/02/2025",
+    walletId: (session?.user as any)?.publicAddress,
+    joinedDate: "22/02/2025",
     tokens: [
       { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 25, value: 13.25 },
       { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 25, value: 13.25 }

@@ -7,11 +7,7 @@ const TokenCard: React.FC<TokenCardProps> = ({
   name,
   logo,
   price,
-  priceChange,
   volume,
-  profitPerToken,
-  bestBuy,
-  bestSell,
 }) => {
   const router = useRouter()
   return (
@@ -38,14 +34,14 @@ const TokenCard: React.FC<TokenCardProps> = ({
           <div className="flex justify-between">
             <div className="flex gap-[2px] content-center">
               <span className="text-black font-semibold">${price.toFixed(4)}</span>
-              <span
+              {/* <span
                 className={`text-sm pt-[2px] ${
                   priceChange >= 0 ? "text-[#02F42A]" : "text-red-500"
                 }`}
               >
                 ({priceChange >= 0 ? "+" : ""}
                 {priceChange.toFixed(2)}%)
-              </span>
+              </span> */}
             </div>
             <span className="font-bold">${volume.toLocaleString()}</span>
           </div>

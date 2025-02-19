@@ -18,6 +18,7 @@ export const user = pgTable('User', {
   publicAddress: varchar('publicAddress', { length: 255 }).notNull().unique(),
   cryptoNonce: varchar('cryptoNonce', { length: 255 }),
   cryptoNonceExpires: timestamp('cryptoNonceExpires'),
+  balance: varchar('balance')
 });
 
 export type User = InferSelectModel<typeof user>;

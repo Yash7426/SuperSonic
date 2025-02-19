@@ -2,9 +2,9 @@ interface TokenCardProps {
   name: string;
   logo: string;
   price: number;
-  priceChange: number;
   volume: number;
-  profitPerToken: number;
+  profitPerToken?: number;
+  priceChange?: number;
   bestBuy?: string;
   bestBuyPrice?: number;
   bestSell?: string;

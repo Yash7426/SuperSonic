@@ -19,9 +19,9 @@ const TokenDetails = ({
         <div className="flex items-center gap-2">
           <Image src={logo} alt={name} width={100} height={100} className="w-4 h-4 md:w-10 md:h-10 rounded-full"/>
           <span className="text-md md:text-2xl font-marvin">{name.toUpperCase()}</span>
-          <span className={`text-xs md:text-sm font-semibold ${priceChange >= 0 ? "text-green-500" : "text-red-500"}`}>
+          {priceChange && <span className={`text-xs md:text-sm font-semibold ${priceChange >= 0 ? "text-green-500" : "text-red-500"}`}>
             ({priceChange.toFixed(2)}%)
-          </span>
+          </span>}
           <span className="text-purple-500 text-lg">★</span>
         </div>
         <span className="text-xs md:text-xl font-bold">${price.toFixed(4)}</span>
@@ -46,7 +46,7 @@ const TokenDetails = ({
         <div className="w-full">
           <h3 className=" font-marvin sm:pl-4">TOTAL PROFIT PER TOKEN <br /> </h3>
           <div className="border border-[#E4E4E4] py-2 px-4 rounded-xl my-1">
-            <span className="font-bold text-[#007E15]">${profitPerToken.toFixed(4)}</span>
+            {profitPerToken && <span className="font-bold text-[#007E15]">${profitPerToken.toFixed(4)}</span>}
           </div>
         </div>
       </div>

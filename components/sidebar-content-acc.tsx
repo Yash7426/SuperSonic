@@ -147,21 +147,6 @@ export function NavMain({
       </div>
       <div
         onClick={() => {
-          router.push("/account");
-        }}
-        className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "account"
-            ? "bg-[#8902F4] text-white font-marvin"
-            : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
-        }`}
-      >
-        <span className={`flex gap-x-2 items-center`}>
-          <User className="w-4 h-4" />
-          Account
-        </span>
-      </div>
-      <div
-        onClick={() => {
           router.push("/stake");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
@@ -173,6 +158,21 @@ export function NavMain({
         <span className={`flex gap-x-2 items-center`}>
           <ChartCandlestick className="w-4 h-4" />
           Stake
+        </span>
+      </div>
+      <div
+        onClick={() => {
+          router.push("/account");
+        }}
+        className={`cursor-pointer py-[12px] px-2 rounded-md ${
+          active == "account"
+            ? "bg-[#8902F4] text-white font-marvin"
+            : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
+        }`}
+      >
+        <span className={`flex gap-x-2 items-center`}>
+          <User className="w-4 h-4" />
+          Account
         </span>
       </div>
       <div

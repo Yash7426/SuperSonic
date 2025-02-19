@@ -1,19 +1,22 @@
-import ProfileCard from '@/components/ui-account/account'
-import React from 'react'
+"use client"
+import ProfileCard from "@/components/ui-account/account";
+import { useSession } from "next-auth/react";
+import React from "react";
 
 const page = () => {
-    const profileData = {
+  const { data: session } = useSession();
+  const profileData = {
     profilePicture: "/images/profile-placeholder.png",
-    walletId: "G4FHvz5DCwHzDViPxhUx97Yu6isKEZgSRociADyhZCVF",
-    joinedDate: "11/02/2025",
-    userId: "cm6zfcfeu01571lp599h41o6f",
-    connectedWallets: ["G4FHvz5DCwHzDViPxhUx97Yu6isKEZgSRociADyhZCVF"]
+    walletId: (session?.user as any)?.publicAddress,
+    joinedDate: "22/02/2025",
+    userId: (session?.user as any)?.id,
+    connectedWallets: [(session?.user as any)?.publicAddress],
   };
   return (
-    <div className='flex items-center m-4 md:m-8'>
-      <ProfileCard profile={profileData}  />
+    <div className="flex items-center m-4 md:m-8">
+      <ProfileCard profile={profileData} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
