@@ -14,7 +14,16 @@ import Cta from "@/components/ui-home/cta";
 
 type SectionComponent = React.FC<{ scrollYProgress: any }>;
 
-const sections: SectionComponent[] = [Landing, Powered, Big, About, Features, Team, Cta, Footer];
+const sections: SectionComponent[] = [
+  Landing,
+  Powered,
+  Big,
+  About,
+  Features,
+  Team,
+  Cta,
+  Footer,
+];
 
 export default function Home() {
   const container = useRef<HTMLDivElement | null>(null);
@@ -38,7 +47,9 @@ export default function Home() {
   }, []);
 
   const scrollToSection = (sectionIndex: number) => {
-    const sectionElement = container.current?.children[sectionIndex] as HTMLElement;
+    const sectionElement = container.current?.children[
+      sectionIndex
+    ] as HTMLElement;
     if (sectionElement) {
       sectionElement.scrollIntoView({ behavior: "smooth" });
     }
@@ -84,7 +95,8 @@ export default function Home() {
     <main ref={container} className="w-full relative bg-white">
       {sections.map((Section, index) => (
         <ParallaxSection key={index} scrollYProgress={scrollYProgress}>
-          <Section scrollYProgress={scrollYProgress} /> {/* Pass scrollYProgress as prop */}
+          <Section scrollYProgress={scrollYProgress} />{" "}
+          {/* Pass scrollYProgress as prop */}
         </ParallaxSection>
       ))}
     </main>
@@ -96,7 +108,10 @@ interface ParallaxSectionProps {
   scrollYProgress: any;
 }
 
-const ParallaxSection: React.FC<ParallaxSectionProps> = ({ children, scrollYProgress }) => {
+const ParallaxSection: React.FC<ParallaxSectionProps> = ({
+  children,
+  scrollYProgress,
+}) => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
