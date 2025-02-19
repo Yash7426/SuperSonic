@@ -1,6 +1,6 @@
-import { ChatRequestOptions, Message } from 'ai';
+import type { ChatRequestOptions, Message } from 'ai';
 import { memo } from 'react';
-import { Vote } from '@/lib/db/schema';
+import type { Vote } from '@/lib/db/schema';
 import equal from 'fast-deep-equal';
 import { useScrollToBottom } from '../use-scroll-to-bottom';
 import { Overview } from '../overview';

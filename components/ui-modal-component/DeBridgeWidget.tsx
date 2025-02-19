@@ -55,7 +55,7 @@ export default function DeBridgeWidget({ coin, action }: DeBridgeWidgetProps) {
         strategy="lazyOnload"
         onLoad={() => setIsScriptLoaded(true)}
       />
-      <div id="debridgeWidget"></div>
+      <div id="debridgeWidget" />
     </>
   );
 }

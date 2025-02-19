@@ -1,6 +1,5 @@
 import { openai } from '@ai-sdk/openai';
 import { groq } from '@ai-sdk/groq';
-import { fireworks } from '@ai-sdk/fireworks';
 import {
   customProvider,
   extractReasoningMiddleware,

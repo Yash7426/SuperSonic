@@ -8,7 +8,7 @@ const ProfileCard: React.FC<{ profile: ProfileProps }> = ({ profile }) => {
       <div className="flex flex-col border border-[#E4E4E4] items-center gap-3 p-4 rounded-lg my-12">
         <div className="flex flex-col md:flex-row items-center gap-4 w-full">
           <div className="flex items-center w-full gap-2">
-            <div className="h-6 w-6 md:h-12 md:w-12 bg-black rounded-full"></div>
+            <div className="h-6 w-6 md:h-12 md:w-12 bg-black rounded-full" />
             <div className="flex flex-col items-start w-[90%]">
               <p className="text-sm font-bold w-full truncate overflow-hidden whitespace-nowrap">
                 {profile.walletId}

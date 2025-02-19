@@ -1,21 +1,21 @@
 "use client"
 import {
   ReactFlow,
-  ProOptions,
+  type ProOptions,
   ReactFlowProvider,
-  NodeOrigin,
+  type NodeOrigin,
   addEdge,
-  OnConnect,
+  type OnConnect,
   Background,
-  Edge,
-  Node,
+  type Edge,
+  type Node,
   Controls,
   Handle,
   Position, 
   applyEdgeChanges, 
   applyNodeChanges,
-  EdgeChange,
-  NodeChange
+  type EdgeChange,
+  type NodeChange
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import TeamCard from "./team-card";
-import { useTransform, MotionValue, motion } from "framer-motion";
+import { useTransform, type MotionValue, motion } from "framer-motion";
 
 interface TeamProps {
   scrollYProgress: MotionValue<number>;

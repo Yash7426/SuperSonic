@@ -21,7 +21,7 @@ const fetchFromNitter = async (query: string) => {
     console.log("HTML snippet:", $.html().slice(0, 1000));
     console.log("Found timeline items:", $(".timeline-item").length);
     
-    let tweets: any[] = [];
+    const tweets: any[] = [];
     $(".timeline-item").each((_, element) => {
       const user = $(element).find(".fullname").text().trim();
       const content = $(element).find(".tweet-content").text().trim();

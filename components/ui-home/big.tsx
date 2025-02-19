@@ -1,4 +1,4 @@
-import { motion, useTransform, MotionValue } from "framer-motion";
+import { motion, useTransform, type MotionValue } from "framer-motion";
 import React from "react";
 
 interface BigProps {

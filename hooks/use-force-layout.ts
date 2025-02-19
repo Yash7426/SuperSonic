@@ -6,16 +6,16 @@ import {
   forceManyBody,
   forceX,
   forceY,
-  SimulationNodeDatum,
-  SimulationLinkDatum,
+  type SimulationNodeDatum,
+  type SimulationLinkDatum,
 } from 'd3-force';
 
 import {
   useReactFlow,
-  ReactFlowProps,
-  ReactFlowState,
+  type ReactFlowProps,
+  type ReactFlowState,
   useStore,
-  Node,
+  type Node,
   useNodesInitialized,
 } from '@xyflow/react';
 
@@ -111,8 +111,8 @@ function useForceLayout({
                 simulationNodes[i].fy = node.position.y;
                 return node;
               } else {
-                delete simulationNodes[i].fx;
-                delete simulationNodes[i].fy;
+                simulationNodes[i].fx = undefined;
+                simulationNodes[i].fy = undefined;
                 return {
                   ...node,
                   position: {

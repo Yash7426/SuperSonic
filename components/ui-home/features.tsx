@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Image from "next/image";
-import { useTransform, motion, MotionValue, useScroll } from "framer-motion";
+import { useTransform, motion, type MotionValue, useScroll } from "framer-motion";
 
 interface FeaturesProps {
   scrollYProgress: MotionValue<number>;

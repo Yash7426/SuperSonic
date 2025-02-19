@@ -20,8 +20,6 @@ import {
 } from 'react';
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
-
-import { sanitizeUIMessages } from '@/lib/utils';
 import equal from 'fast-deep-equal';
 import { PreviewAttachment } from '../preview-attachment';
 import { Textarea } from '../ui/textarea';

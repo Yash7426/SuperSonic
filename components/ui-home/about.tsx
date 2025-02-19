@@ -1,6 +1,6 @@
 import React from "react";
 import FlowWithProvider from "../ui-graph-component/homeGraph";
-import { useTransform, MotionValue, motion } from "framer-motion";
+import { useTransform, type MotionValue, motion } from "framer-motion";
 
 interface AboutProps {
   scrollYProgress: MotionValue<number>;

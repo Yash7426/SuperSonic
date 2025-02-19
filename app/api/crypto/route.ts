@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { randomBytes } from 'crypto';
+import { randomBytes } from 'node:crypto';
 import { upsertUserNonce } from '@/lib/db/queries';
 
 export async function POST(req: Request) {

@@ -13,7 +13,6 @@ import {
 import {
   ChartCandlestick,
   ChartPie,
-  ChevronRight,
   CircleDot,
   MessageSquare,
   PlusIcon,
@@ -23,13 +22,6 @@ import {
 
 import {
   SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
 import {
@@ -39,7 +31,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useRouter } from "next/navigation";
-import { User as UserType } from "next-auth";
+import type { User as UserType } from "next-auth";
 import { SidebarHistory } from "@/components/sidebar-history";
 
 export function NavMain({
@@ -89,14 +81,14 @@ export function NavMain({
             //     router.push("/chat")
             // }}
             className={`px-2 hover:no-underline rounded-md ${
-              active == "chat"
+              active === "chat"
                 ? "bg-[#8902F4] text-white text-xl font-marvin font-bold"
                 : "text-[#8C8C8C] text-sm font-semibold "
             }`}
           >
             <span
               className={`flex gap-x-2  ${
-                active == "chat"
+                active === "chat"
                   ? "flex-col items-start"
                   : "flex-row items-center"
               }`}
@@ -135,7 +127,7 @@ export function NavMain({
           router.push("/token");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "token"
+          active === "token"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}
@@ -150,7 +142,7 @@ export function NavMain({
           router.push("/stake");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "stake"
+          active === "stake"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}
@@ -165,7 +157,7 @@ export function NavMain({
           router.push("/account");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "account"
+          active === "account"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}
@@ -180,7 +172,7 @@ export function NavMain({
           router.push("/portfolio");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "portfolio"
+          active === "portfolio"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}

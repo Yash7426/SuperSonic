@@ -3,7 +3,7 @@ import PortfolioCard from '@/components/ui-portfolio/portfolio';
 import { useSession } from 'next-auth/react';
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession();
     const portfolioData = {
     walletId: (session?.user as any)?.publicAddress,
@@ -13,8 +13,8 @@ const page = () => {
       { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 25, value: 13.25 }
     ],
     transactions: [
-      { type: "Bought" as "Bought", token: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 14, value: 13.25 }, date: "25 January 2025" },
-      { type: "Sold" as "Sold", token: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 1, value: 13.25 }, date: "25 January 2025" }
+      { type: "Bought" as const, token: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 14, value: 13.25 }, date: "25 January 2025" },
+      { type: "Sold" as const, token: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 1, value: 13.25 }, date: "25 January 2025" }
     ],
     swaps: [
       { fromToken: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 25, value: 13.25 }, toToken: { name: "BITCOIN", logo: "/images/bitcoin-logo.svg", amount: 25, value: 13.25 }, date: "25 Jan 2025" },
@@ -28,4 +28,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

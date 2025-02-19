@@ -1,7 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
 import Script from "next/script";
-import axios from "axios";
 
 interface Tweet {
   user: string;

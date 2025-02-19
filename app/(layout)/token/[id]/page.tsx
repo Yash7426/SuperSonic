@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "next/navigation";
-import Flow from "@/components/ui-graph-component/homeGraph";
 import CandlestickChart from "@/components/ui-token_id/token_chart";
 import LatestTweets from "@/components/ui-token_id/token_tweets";
 import SentimentMeter from "@/components/ui-token_id/token_sentiment";

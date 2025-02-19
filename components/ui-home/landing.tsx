@@ -1,7 +1,7 @@
 import React from "react";
 import HomeNav from "./homeNav";
 import LandingSec from "./landingSec";
-import { useTransform, motion, MotionValue } from "framer-motion";
+import { useTransform, motion, type MotionValue } from "framer-motion";
 
 interface LandingProps {
   scrollYProgress: MotionValue<number>;

@@ -2,9 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import {
   createChart,
-  IChartApi,
-  ISeriesApi,
-  CandlestickSeriesOptions,
+  type IChartApi,
+  type ISeriesApi,
   CandlestickSeries,
 } from "lightweight-charts";
 import axios from "axios";
