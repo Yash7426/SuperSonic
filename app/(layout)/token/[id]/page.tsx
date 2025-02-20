@@ -1,15 +1,104 @@
 "use client";
 
-import React from "react";
-import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import CandlestickChart from "@/components/ui-token_id/token_chart";
 import LatestTweets from "@/components/ui-token_id/token_tweets";
 import SentimentMeter from "@/components/ui-token_id/token_sentiment";
 import TokenDetails from "@/components/ui-token_id/token_details";
 import TradeChatTabs from "@/components/ui-token_id/token_trade";
+import { Skeleton } from "@/components/ui/skeleton";
+
+interface coin_val {
+  name: string;
+  tenmin: number;
+  oneday: number;
+}
+
+const dummyData: coin_val[] = [
+  {
+    name: "bitcoin",
+    tenmin: 3,
+    oneday: 4,
+  },
+  {
+    name: "ethereum",
+    tenmin: 1,
+    oneday: 2,
+  },
+  {
+    name: "solana",
+    tenmin: 5,
+    oneday: 6,
+  },
+  {
+    name: "sonic",
+    tenmin: 0,
+    oneday: 0,
+  },
+  {
+    name: "dogecoin",
+    tenmin: 0,
+    oneday: 0,
+  },
+];
 
 const Page = () => {
   const { id }: { id: string } = useParams();
+  const [loading, setLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const time = searchParams.get("t");
+
+  const getTenMinPrediction = (coinName: string): number | null => {
+    const coin = dummyData.find((c) => c.name === coinName);
+    return coin ? coin.tenmin : 0;
+  };
+  const getOneDayPrediction = (coinName: string): number | null => {
+    const coin = dummyData.find((c) => c.name === coinName);
+    return coin ? coin.oneday : 0;
+  };
+  const [predictions, setPredictions] = useState<{
+    after10min: number | null;
+    after24h: number | null;
+  }>({
+    after10min: null,
+    after24h: null,
+  });
+
+  useEffect(() => {
+    const fetchPredictions = async () => {
+      try {
+        const val1 = getTenMinPrediction(id.toLowerCase());
+        const val2 = getOneDayPrediction(id.toLowerCase());
+        if (val1 == 0 || val2 == 0) return;
+
+        const response10min = await fetch(
+          `https://allora-api.testnet.allora.network/emissions/v7/latest_network_inferences/${val1}`
+        );
+        const data10min = await response10min.json();
+
+        const response24h = await fetch(
+          `https://allora-api.testnet.allora.network/emissions/v7/latest_network_inferences/${val2}`
+        );
+        const data24h = await response24h.json();
+
+        setPredictions({
+          after10min: data10min?.network_inferences?.combined_value
+            ? Number(data10min.network_inferences.combined_value)
+            : null,
+          after24h: data24h?.network_inferences?.combined_value
+            ? Number(data24h.network_inferences.combined_value)
+            : null,
+        });
+      } catch (error) {
+        console.error("Error fetching predictions:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPredictions();
+  }, [id]);
 
   // correct code
   // const [tokenData, setTokenData] = useState<any>(null);
@@ -24,7 +113,7 @@ const Page = () => {
   //         headers: {
   //           "Content-Type": "application/json",
   //         },
-  //         body: JSON.stringify({ coin: id.toLowerCase(), time: 2, query: [] }),
+  //         body: JSON.stringify({ coin: id.toLowerCase(), time: time, query: [] }),
   //       });
 
   //       const data = await response.json();
@@ -68,10 +157,20 @@ const Page = () => {
     bestSellPrice: 92.0876,
   };
 
+  if (loading)
+    return (
+      <div className="flex flex-col space-y-3 h-[50vh] w-[50%] items-center justify-center mx-auto">
+        <Skeleton className="h-full w-full rounded-xl" />
+        <div className="space-y-2 w-full">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+        </div>
+      </div>
+    );
   return (
     <div className="mx-4 md:mx-8 my-2 rounded-lg flex gap-x-4 flex-col xl:flex-row h-screen overflow-y-scroll">
       <div className="w-[65%] lg:w-[70%] flex flex-col items-center">
-        <TokenDetails {...t} />
+        <TokenDetails {...t} {...predictions} />
         <div className="border border-[#E4E4E4] rounded-md p-4 w-full">
           <CandlestickChart coinId={id} />
         </div>

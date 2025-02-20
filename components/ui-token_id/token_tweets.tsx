@@ -12,15 +12,18 @@ interface LatestTweetsProps {
 }
 
 const LatestTweets = ({ query }: LatestTweetsProps) => {
+
+  if(query.toLowerCase()=="sonic") query = "SonicLabs";
+
   return (
     <>
       <Script src="https://platform.twitter.com/widgets.js" />
       <a
         data-height="243"
         className="twitter-timeline"
-        href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw"
+        href={`https://twitter.com/${query.toUpperCase()}`}
       >
-        Tweets by XDevelopers
+        Tweets by {query}
       </a>
     </>
   );

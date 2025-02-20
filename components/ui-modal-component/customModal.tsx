@@ -19,10 +19,6 @@ const CustomModal: React.FC<CustomModalProps> = ({
   action,
   dex,
 }) => {
-  console.log("coin", coin);
-  console.log("action", action);
-  console.log("dex", dex);
-
   const renderWidget = () => {
     console.log(dex);
     switch (dex) {

@@ -9,4 +9,6 @@ interface TokenCardProps {
   bestBuyPrice?: number;
   bestSell?: string;
   bestSellPrice?: number;
+  after10min?: number | null
+  after24h?: number | null
 }

@@ -31,7 +31,7 @@ const TokenHeader: React.FC = () => {
       volume: 980000000,
     },
     {
-      name: "Cardano",
+      name: "Sonic",
       logo: "https://cryptologos.cc/logos/cardano-ada-logo.png",
       price: 0.58,
       volume: 450000000,

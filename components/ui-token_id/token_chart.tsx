@@ -13,6 +13,7 @@ interface CandlestickChartProps {
 }
 
 const CandlestickChart = ({ coinId }: CandlestickChartProps) => {
+  if(coinId.toLowerCase()=="sonic") coinId="sonic-3";
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const [chart, setChart] = useState<IChartApi | null>(null);
   const [candleSeries, setCandleSeries] = useState<ISeriesApi<"Candlestick"> | null>(null);
