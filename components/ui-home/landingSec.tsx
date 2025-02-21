@@ -7,7 +7,7 @@ const cryptoIcons = [
   'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
   'https://cryptologos.cc/logos/ethereum-eth-logo.png',
   'https://cryptologos.cc/logos/dogecoin-doge-logo.png',
-  'https://cryptologos.cc/logos/xrp-xrp-logo.png',
+  'https://cryptologos.cc/logos/solana-sol-logo.png',
   '/images/sonic-logo.svg'
 ];
 

@@ -36,6 +36,16 @@ export const initialNodes: Node[] = [
     type: "agent",
   },
   {
+    id: "2.11",
+    position: { x: 0, y: 200 },
+    data: {
+      icon: "BotMessageSquare",
+      name: "ZerePy Social AI-Agent",
+    },
+    className: styles.node,
+    type: "agent",
+  },
+  {
     id: "2.1",
     position: { x: 200, y: 500 },
     data: {
@@ -226,20 +236,40 @@ export const initialEdges: Edge[] = [
     source: "1",
     target: "2",
   },
+  // {
+  //   id: "2->2.1",
+  //   source: "2",
+  //   target: "2.1",
+  // },
+  // {
+  //   id: "2->2.2",
+  //   source: "2",
+  //   target: "2.2",
+  // },
+  // {
+  //   id: "2->2.3",
+  //   source: "2",
+  //   target: "2.3",
+  // },
   {
-    id: "2->2.1",
+    id: "2->2.11",
     source: "2",
+    target: "2.11",
+  },
+  {
+    id: "2.11->2.1",
+    source: "2.11",
     target: "2.1",
   },
   {
-    id: "2->2.2",
-    source: "2",
-    target: "2.2",
+    id: "2.11->2.3",
+    source: "2.11",
+    target: "2.3",
   },
   {
-    id: "2->2.3",
-    source: "2",
-    target: "2.3",
+    id: "2.11->2.2",
+    source: "2.11",
+    target: "2.2",
   },
   {
     id: "1->3",
