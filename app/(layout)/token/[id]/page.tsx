@@ -199,7 +199,7 @@ const Page = () => {
       <div className="w-[65%] lg:w-[70%] flex flex-col items-center">
         <TokenDetails {...tokenData} {...predictions} />
         <div className="border border-[#E4E4E4] rounded-md p-4 w-full">
-          {/* <CandlestickChart coinId={id} /> */}
+          <CandlestickChart coinId={id} />
         </div>
         <div className="py-1 w-full flex flex-col gap-y-2 xl:flex-row justify-center items-center xl:gap-x-4">
           <div className="w-full xl:w-[48%]">
