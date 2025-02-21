@@ -21,7 +21,7 @@ const Team: React.FC<TeamProps> = ({ scrollYProgress }) => {
           We are a passionate team of blockchain enthusiasts, AI engineers, and Web developers committed to transforming decentralized trading. Our mission is to empower traders with AI-driven insights, eliminate inefficiencies in decentralized markets, and push the boundaries of financial technology.
         </div>
         <div className="flex flex-row justify-between">
-          <TeamCard name="Aviral Hatwal" posi="Blockchain Developer" img="aviral" />
+          <TeamCard name="Dheeraj Pareek" posi="Blockchain Developer" img="aviral" />
           <TeamCard name="Mayank Rawat" posi="Web Developer" img="mayank" />
           <TeamCard name="Darsh Baxi" posi="AI Developer" img="darsh" />
           <TeamCard name="Yash Kudnar" posi="Blockchain Developer" img="kudnar" />
