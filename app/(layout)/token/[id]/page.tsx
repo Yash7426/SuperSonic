@@ -14,6 +14,7 @@ interface coin_val {
   name: string;
   tenmin: number;
   oneday: number;
+  logo:string;
 }
 
 const dummyData: coin_val[] = [
@@ -21,31 +22,36 @@ const dummyData: coin_val[] = [
     name: "bitcoin",
     tenmin: 3,
     oneday: 4,
+    logo : "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
   },
   {
     name: "ethereum",
     tenmin: 1,
     oneday: 2,
+    logo:"https://cryptologos.cc/logos/ethereum-eth-logo.png"
   },
   {
     name: "solana",
     tenmin: 5,
     oneday: 6,
+    logo:"https://cryptologos.cc/logos/solana-sol-logo.png"
   },
   {
     name: "sonic",
     tenmin: 0,
     oneday: 0,
+    logo:"/images/sonic-logo.svg"
   },
   {
     name: "dogecoin",
     tenmin: 0,
     oneday: 0,
+    logo :"https://cryptologos.cc/logos/dogecoin-doge-logo.png'"
   },
 ];
 function cleanTokenParam(param: string): string {
   const decoded = decodeURIComponent(param);
-  return decoded.startsWith("Sonic") ? "Sonic" : decoded;
+  return decoded.startsWith("Sonic") ? "sonic" : decoded;
 }
 
 const Page = () => {
@@ -66,6 +72,10 @@ const Page = () => {
   const getOneDayPrediction = (coinName: string): number | null => {
     const coin = dummyData.find((c) => c.name === coinName);
     return coin ? coin.oneday : 0;
+  };
+  const getLogo = (coinName: string): string => {
+    const coin = dummyData.find((c) => c.name === coinName.toLowerCase());
+    return coin ? coin.logo : "https://cryptologos.cc/logos/bitcoin-btc-logo.png";
   };
   const [predictions, setPredictions] = useState<{
     after10min: number | null;
@@ -136,7 +146,7 @@ const Page = () => {
         setTokenData({
           name: id,
           // take logo from coins map
-          logo: `https://cryptologos.cc/logos/bitcoin-btc-logo.png`,
+          logo: getLogo(id),
           price: data.result.buy_price,
           priceChange: data.result.change_per,
           volume: data.result.dex.dex_1.current_price,
@@ -189,7 +199,7 @@ const Page = () => {
       <div className="w-[65%] lg:w-[70%] flex flex-col items-center">
         <TokenDetails {...tokenData} {...predictions} />
         <div className="border border-[#E4E4E4] rounded-md p-4 w-full">
-          <CandlestickChart coinId={id} />
+          {/* <CandlestickChart coinId={id} /> */}
         </div>
         <div className="py-1 w-full flex flex-col gap-y-2 xl:flex-row justify-center items-center xl:gap-x-4">
           <div className="w-full xl:w-[48%]">
