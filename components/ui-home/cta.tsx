@@ -16,7 +16,7 @@ const Cta: React.FC<CtaProps> = ({ scrollYProgress }) => {
       // style={{ scale, rotate }}
       className="h-[120vh] bg-[#111111] flex flex-col items-center justify-center gap-[6vh]"
     >
-      <div className="font-marvin text-[100px] text-white text-center pt-[5vh] flex flex-col items-center leading-[120px]">
+      <div className="font-marvin text-[100px] text-white text-center pt-[3vh] flex flex-col items-center leading-[120px]">
         <h1 className="flex flex-row">
           Trade smarter<span className="text-[#8902F4]">.</span>
         </h1>

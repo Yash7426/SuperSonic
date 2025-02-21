@@ -56,8 +56,8 @@ export default function Butn() {
   console.log(session.status)
   return (
     <main>
-      <h1 className="className='text-[30px] text-white px-4 py-2 rounded-[50px] bg-[#8902F4] w-[200px] text-center hover:bg-white hover:text-black transition duration-300 ease-in-out'">
-      <button onClick={onSignInWithMetaMask} className="font-marvin py-[10px]" >Get Started</button>
+      <h1 className="className=' text-white px-4 py-2 rounded-[50px] bg-[#8902F4] w-[200px] text-center hover:bg-white hover:text-black transition duration-300 ease-in-out'">
+      <button onClick={onSignInWithMetaMask} className="font-marvin  text-[30px]" >Get Started</button>
       </h1>
     </main>
   );
