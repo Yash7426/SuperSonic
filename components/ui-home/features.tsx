@@ -22,10 +22,13 @@ const Features: React.FC<FeaturesProps> = ({ scrollYProgress }) => {
     <motion.div
       ref={ref}
       // style={{ rotate }}
-      className="h-[100vh] bg-white flex flex-col py-[8vh] px-[5vw] gap-[8vh]"
+      className="h-[100vh] bg-white flex flex-col py-[8vh] px-[5vw] gap-[6vh]"
     >
       <div className="flex flex-row justify-between">
-        <Image src="/images/sonic.svg" alt="sonic" width={150} height={150} />
+        <div className="font-marvin text-[30px] flex flex-row items-center gap-2">
+        <Image src="/images/logo.svg" alt="sonic" width={30} height={30} />
+        <p>SuperSonic</p>
+        </div>
         <h1 className="font-marvin text-[80px]">Features</h1>
       </div>
       <Image

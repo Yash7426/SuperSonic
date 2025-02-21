@@ -1,5 +1,6 @@
 import { useTransform, type MotionValue, motion } from "framer-motion";
 import React from "react";
+import Image from "next/image";
 
 interface FooterProps {
   scrollYProgress: MotionValue<number>;
@@ -12,9 +13,26 @@ const Footer: React.FC<FooterProps> = ({ scrollYProgress }) => {
   return (
     <motion.div
       // style={{ scale, rotate }}
-      className="h-[100vh] text-[300px] flex justify-center items-center font-marvin"
+      className="h-[100vh] text-[200px] flex justify-center flex-col items-center font-marvin"
     >
-      SuperSonic
+      <div className="flex flex-row items-center gap-2">
+
+      <Image
+        src={"/images/logo.svg"}
+        alt="."
+        width={250}
+        height={250}
+      />
+      uper
+      {/* <Image
+        src={"/images/logo.svg"}
+        alt="."
+        width={250}
+        height={250}
+      /> */}
+      onic
+      </div>
+      <div className="font-marvin text-[20px] align-baseline">@SUPERSONIC 2025</div>
     </motion.div>
   );
 };

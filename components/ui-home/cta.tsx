@@ -1,6 +1,7 @@
 import React from "react";
 import Butn from "./butn";
 import { useTransform, type MotionValue, motion } from "framer-motion";
+import Login from "../ui-login/login";
 
 interface CtaProps {
   scrollYProgress: MotionValue<number>;
@@ -13,9 +14,9 @@ const Cta: React.FC<CtaProps> = ({ scrollYProgress }) => {
   return (
     <motion.div
       // style={{ scale, rotate }}
-      className="h-[120vh] bg-[#111111] flex flex-col items-center justify-center gap-[15vh] rounded-b-[80px]"
+      className="h-[120vh] bg-[#111111] flex flex-col items-center justify-center gap-[6vh]"
     >
-      <div className="font-marvin text-[100px] text-white text-center pt-[15vh] flex flex-col items-center leading-[120px]">
+      <div className="font-marvin text-[100px] text-white text-center pt-[5vh] flex flex-col items-center leading-[120px]">
         <h1 className="flex flex-row">
           Trade smarter<span className="text-[#8902F4]">.</span>
         </h1>
@@ -26,9 +27,7 @@ const Cta: React.FC<CtaProps> = ({ scrollYProgress }) => {
           Stay ahead<span className="text-[#8902F4]">.</span>
         </h1>
       </div>
-      <div>
-        <Butn />
-      </div>
+      <Butn />
     </motion.div>
   );
 };

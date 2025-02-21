@@ -26,6 +26,7 @@ import Link from "next/link";
 import { NavUser } from "@/components/sidebar-user-footer";
 import { NavMain } from "@/components/sidebar-content-acc";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export function AppSidebar({ user }: { user: User | undefined }) {
   const router = useRouter();
@@ -172,7 +173,13 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row gap-3 items-center"
             >
-              <span className=" text-3xl font-marvin px-2 hover:text-[#bcbbbb] rounded-md cursor-pointer">
+              <span className=" text-3xl font-marvin px-2 hover:text-[#bcbbbb] rounded-md cursor-pointer flex flex-row gap-3">
+                <Image
+                  src={"/images/logo.svg"}
+                  alt=""
+                  width={24}
+                  height={24}
+                />
                 SUPERSONIC
               </span>
             </Link>
@@ -216,8 +223,13 @@ export function AppSidebar({ user }: { user: User | undefined }) {
             }}
             className=""
           >
-            <span className="text-md  px-2 rounded-md cursor-pointer">
-              Follow us on <span className="text-2xl font-marvin">X</span>
+            <span className="text-md  px-2 rounded-md cursor-pointer flex flex-row gap-4">
+              Follow us on <Image
+                src={"/images/x.svg"}
+                alt="X"
+                width={24}
+                height={24}
+              />
             </span>
           </Link>
         </div>
