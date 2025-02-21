@@ -134,7 +134,7 @@ const Page = () => {
   useEffect(() => {
     const fetchTokenData = async () => {
       try {
-        const response = await fetch("https://sonic-s449.onrender.com/sentiment", {
+        const response = await fetch("https://sonic-csxw.onrender.com/sentiment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

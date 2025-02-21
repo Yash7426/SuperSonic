@@ -74,7 +74,7 @@ const TokenHeader: React.FC = () => {
     const fetchTrendingCoins = async () => {
       try {
         const trendingResponse = await fetch(
-          "https://sonic-s449.onrender.com/trending_coin",
+          "https://sonic-csxw.onrender.com/trending_coin",
           {
             method: "POST",
             headers: {
