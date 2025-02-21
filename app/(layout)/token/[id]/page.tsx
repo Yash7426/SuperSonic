@@ -8,6 +8,7 @@ import SentimentMeter from "@/components/ui-token_id/token_sentiment";
 import TokenDetails from "@/components/ui-token_id/token_details";
 import TradeChatTabs from "@/components/ui-token_id/token_trade";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Tweets } from "@/components/ui-token/token-header";
 
 interface coin_val {
   name: string;
@@ -42,10 +43,19 @@ const dummyData: coin_val[] = [
     oneday: 0,
   },
 ];
+function cleanTokenParam(param: string): string {
+  const decoded = decodeURIComponent(param);
+  return decoded.startsWith("Sonic") ? "Sonic" : decoded;
+}
 
 const Page = () => {
-  const { id }: { id: string } = useParams();
+  let { id }: { id: string } = useParams();
   const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
+
+
+  id = cleanTokenParam(id)
+
   const searchParams = useSearchParams();
   const time = searchParams.get("t");
 
@@ -101,63 +111,68 @@ const Page = () => {
   }, [id]);
 
   // correct code
-  // const [tokenData, setTokenData] = useState<any>(null);
-  // const [score,setScore] = useState<number>(0);
-  // const [loading, setLoading] = useState<boolean>(true);
+  const [tokenData, setTokenData] = useState<any>(null);
+  const [score,setScore] = useState<number>(0);
 
-  // useEffect(() => {
-  //   const fetchTokenData = async () => {
-  //     try {
-  //       const response = await fetch("https://sonic-s449.onrender.com/sentiment", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ coin: id.toLowerCase(), time: time, query: [] }),
-  //       });
+  function getDex(dex:string){
+    if(dex=="dex_1") return "Uniswap";
+    if(dex=="dex_2") return "Raydium";
+    if(dex=="dex_3") return "PancakeSwap";
+    return "Uniswap";
+  }
 
-  //       const data = await response.json();
-  //       setTokenData({
-  //         name: id,
-  //         // take logo from coins map
-  //         logo: `https://cryptologos.cc/logos/bitcoin-btc-logo.png`,
-  //         price: data.result.buy_price,
-  //         priceChange: data.result.change_per,
-  //         volume: data.result.dex.dex_1.current_price,
-  //         profitPerToken: data.result.change_val,
-  //         bestBuy: data.result.buying_dex,
-  //         bestSell: data.result.selling_dex,
-  //         bestBuyPrice: data.result.buy_price,
-  //         bestSellPrice: data.result.sell_price,
-  //       });
-  //       setScore(data.result.score)
-  //     } catch (error) {
-  //       console.error("Error fetching token data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchTokenData = async () => {
+      try {
+        const response = await fetch("https://sonic-s449.onrender.com/sentiment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ coin: id.toLowerCase(), time: time, query: Tweets }),
+        });
 
-  //   fetchTokenData();
-  // }, [id]);
+        const data = await response.json();
+        setTokenData({
+          name: id,
+          // take logo from coins map
+          logo: `https://cryptologos.cc/logos/bitcoin-btc-logo.png`,
+          price: data.result.buy_price,
+          priceChange: data.result.change_per,
+          volume: data.result.dex.dex_1.current_price,
+          profitPerToken: data.result.change_val,
+          bestBuy: getDex(data.result.buying_dex),
+          bestSell: getDex(data.result.selling_dex),
+          bestBuyPrice: data.result.buy_price,
+          bestSellPrice: data.result.sell_price,
+        });
+        setScore(data.result.score)
+      } catch (error) {
+        console.error("Error fetching token data:", error);
+      } finally {
+        setLoading2(false);
+      }
+    };
 
-  // if (loading) return <p>Loading...</p>;
-  // if (!tokenData) return <p>Failed to fetch data</p>;
+    fetchTokenData();
+  }, [id]);
 
-  const t = {
-    name: "Bitcoin",
-    logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
-    price: 48250.75,
-    priceChange: -1.2,
-    volume: 2560000000,
-    profitPerToken: 320.5,
-    bestBuy: "Binance",
-    bestSell: "Coinbase",
-    bestBuyPrice: 92.0876,
-    bestSellPrice: 92.0876,
-  };
 
-  if (loading)
+  // const t = {
+  //   name: "Bitcoin",
+  //   logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+  //   price: 48250.75,
+  //   priceChange: -1.2,
+  //   volume: 2560000000,
+  //   profitPerToken: 320.5,
+  //   bestBuy: "Binance",
+  //   bestSell: "Coinbase",
+  //   bestBuyPrice: 92.0876,
+  //   bestSellPrice: 92.0876,
+  // };
+
+  console.log("object",tokenData);
+  if (loading  || loading2)
     return (
       <div className="flex flex-col space-y-3 h-[50vh] w-[50%] items-center justify-center mx-auto">
         <Skeleton className="h-full w-full rounded-xl" />
@@ -167,16 +182,18 @@ const Page = () => {
         </div>
       </div>
     );
+  if (!tokenData) return <p>Failed to fetch data</p>;
+
   return (
     <div className="mx-4 md:mx-8 my-2 rounded-lg flex gap-x-4 flex-col xl:flex-row h-screen overflow-y-scroll">
       <div className="w-[65%] lg:w-[70%] flex flex-col items-center">
-        <TokenDetails {...t} {...predictions} />
+        <TokenDetails {...tokenData} {...predictions} />
         <div className="border border-[#E4E4E4] rounded-md p-4 w-full">
           <CandlestickChart coinId={id} />
         </div>
         <div className="py-1 w-full flex flex-col gap-y-2 xl:flex-row justify-center items-center xl:gap-x-4">
           <div className="w-full xl:w-[48%]">
-            <SentimentMeter value={1} />
+            <SentimentMeter value={score} />
           </div>
           <div className="w-full xl:w-[48%]">
             <LatestTweets query={id} />

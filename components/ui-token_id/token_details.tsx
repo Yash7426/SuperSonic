@@ -138,8 +138,13 @@ const TokenDetails = ({
           </h3>
           <div className="border border-[#E4E4E4] py-2 px-4 rounded-xl my-1">
             {profitPerToken && (
-              <span className="font-bold text-[#007E15]">
-                ${profitPerToken.toFixed(4)}
+             <span
+                className={`font-bold pt-[2px] ${
+                  profitPerToken >= 0 ? "text-[#02F42A]" : "text-red-500"
+                }`}
+              >
+                {profitPerToken >= 0 ? "+" : ""}
+                {profitPerToken.toFixed(2)}%
               </span>
             )}
           </div>
