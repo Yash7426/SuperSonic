@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center">
   <img src="public/images/logo-supersonic.jpg" alt="Logo" width="180px">
 </p>
