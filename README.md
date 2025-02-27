@@ -215,4 +215,4 @@ These repositories contain the AI-driven arbitrage models, smart contract implem
 
 ---
 
-Feel free to [submit an issue](https://github.com/Yash7426/SuperSonic/issues) or [contact us](yashkudnar519@gmail.com) for feature requests or questions. We hope SuperSonic empowers you to capture profitable arbitrage opportunities with ease and efficiency. Happy trading!
+Feel free to [submit an issue](https://github.com/Yash7426/SuperSonic/issues) or [contact us](mailto:yashkudnar519@gmail.com) for feature requests or questions. We hope SuperSonic empowers you to capture profitable arbitrage opportunities with ease and efficiency. Happy trading!
