@@ -4,7 +4,10 @@
 
 <div align="center">
   <p>
-    <a href="https://super-sonic-eta.vercel.app/">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=yWLr_TDu4Pw&ab_channel=DarshBaxi">View Demo</a>
+    .<a href="https://super-sonic-eta.vercel.app/">Deployed Link</a>
+    .
+    <a href="https://super-sonic-eta.vercel.app/"></a>
     ·
     <a href="mailto:yashkudnar519@gmail.com">Contact us</a>
     ·
@@ -210,10 +213,6 @@ Explore the core components of **SuperSonic** on GitHub:
 
 These repositories contain the AI-driven arbitrage models, smart contract implementations, and backend infrastructure powering **SuperSonic**. 🚀
 
- 
-
-> *Note: Add or remove contributors as needed.*
-
 ---
 
-Feel free to [submit an issue](https://github.com/YourOrg/YourRepo/issues) or [contact us](mailto:YourEmail@example.com) for feature requests or questions. We hope SuperSonic empowers you to capture profitable arbitrage opportunities with ease and efficiency. Happy trading!
+Feel free to [submit an issue](https://github.com/Yash7426/SuperSonic/issues) or [contact us](yashkudnar519@gmail.com) for feature requests or questions. We hope SuperSonic empowers you to capture profitable arbitrage opportunities with ease and efficiency. Happy trading!
