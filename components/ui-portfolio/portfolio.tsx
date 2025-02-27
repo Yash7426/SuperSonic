@@ -13,7 +13,7 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
       <h2 className="text-xl font-marvin">PORTFOLIO</h2>
       <hr className="border-[#E4E4E4] w-[90%]" />
       <div className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg my-6">
-        <div className="w-6 h-6 md:h-12 md:w-12 bg-black rounded-full"></div>
+        <div className="w-6 h-6 md:h-12 md:w-12 bg-black rounded-full" />
         <div className="w-[90%]">
           <p className="font-mono text-sm font-bold truncate overflow-hidden whitespace-nowrap">{walletId}</p>
           <p className="text-[#2D2D2D] text-xs">Joined on {joinedDate}</p>
@@ -95,7 +95,7 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
               </div>
               <div className="flex justify-around w-[90%] md:w-[70%] xl:w-[60%] text-xs md:text-sm">
                 <p className="">{tx.type}</p>
-                <p className="">{tx.token.amount} BTC</p>
+                <p className="">{tx.token.amount} Tokens</p>
                 <p className="">${tx.token.value.toFixed(2)}</p>
                 <p className="">{tx.date}</p>
               </div>
@@ -131,7 +131,7 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
                   <div>
                     <p className="text-sm font-bold">{swap.fromToken.name}</p>
                     <p className="text-sm font-bold">
-                      {swap.fromToken.amount} BTC
+                      {swap.fromToken.amount}
                     </p>
                     <p className="text-gray-600 text-xs">
                       ${swap.fromToken.value}
@@ -156,7 +156,7 @@ const PortfolioCard: React.FC<PortfolioProps> = ({
                   <div>
                     <p className="text-sm font-bold">{swap.toToken.name}</p>
                     <p className="text-sm font-bold">
-                      {swap.toToken.amount} BTC
+                      {swap.toToken.amount} 
                     </p>
                     <p className="text-gray-600 text-xs">
                       ${swap.toToken.value}

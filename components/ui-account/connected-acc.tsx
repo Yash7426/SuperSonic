@@ -13,14 +13,6 @@ const ConnectedAccounts = () => {
 
   const connectTwitter = () => {
     setAccounts((prev) => ({ ...prev, twitter: "Connected" }));
-    // TODO: API call to save connection
-    /*
-    fetch("/api/connect-account", {
-      method: "POST",
-      body: JSON.stringify({ platform: "twitter" }),
-      headers: { "Content-Type": "application/json" }
-    });
-    */
   };
 
   const connectGoogle = () => {

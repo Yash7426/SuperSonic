@@ -7,9 +7,13 @@ import { getUserByPublicAddress, clearUserNonce } from '@/lib/db/queries';
 import { authConfig } from './auth.config';
 
 interface ExtendedSession extends Session {
-  user: User;
+  user: CustomUser;
 }
 
+interface CustomUser extends User {
+  publicAddress?: string;
+  balance?:string
+}
 export const {
   handlers: { GET, POST },
   auth,
@@ -24,8 +28,10 @@ export const {
       credentials: {
         publicAddress: { label: "Public Address", type: "text" },
         signedNonce: { label: "Signed Nonce", type: "text" },
+        balance : {label: "balance",type:"text"}
       },
-      async authorize({ publicAddress, signedNonce }: any) {
+      async authorize({ publicAddress, signedNonce , balance}: any) {
+        console.log("yash",balance);
         // Fetch the user by publicAddress from your database using Drizzle
         const [user] = await getUserByPublicAddress(publicAddress);
         if (!user || !user.cryptoNonce || !user.cryptoNonceExpires) return null;
@@ -50,9 +56,9 @@ export const {
         
         // Clear the nonce (or update it) after successful verification
         await clearUserNonce(user.id);
-        
+        console.log("object",user);
         // Return the user object; this object is saved in the session
-        return { id: user.id, publicAddress: user.publicAddress };
+        return { id: user.id, publicAddress: user.publicAddress , balance:user.balance};
       },
     }),
   ],
@@ -60,6 +66,8 @@ export const {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.publicAddress = (user as CustomUser).publicAddress;
+        token.balance = (user as CustomUser).balance;
       }
 
       return token;
@@ -73,9 +81,15 @@ export const {
     }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.publicAddress = token.publicAddress;
+        session.user.balance = token.balance
       }
-
-      return session;
+      return {
+        ...session,
+        user: {
+          ...session.user
+        },
+      }
     },
   },
 });

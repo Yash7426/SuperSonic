@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="public/images/logo-supersonic.jpg" alt="Logo" width="180px">
 </p>
@@ -217,3 +218,5 @@ These repositories contain the AI-driven arbitrage models, smart contract implem
 ---
 
 Feel free to [submit an issue](https://github.com/YourOrg/YourRepo/issues) or [contact us](mailto:YourEmail@example.com) for feature requests or questions. We hope SuperSonic empowers you to capture profitable arbitrage opportunities with ease and efficiency. Happy trading!
+=======
+>>>>>>> 8eff6ec6252f489317dcb3ce2b7155f99dfaead8

@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
       {
         hostname: 'cryptologos.cc',
       },
+      {
+        hostname: 'coin-images.coingecko.com',
+      },
+      {
+        hostname: 'assets.coingecko.com',
+      },
     ],
   },
 };

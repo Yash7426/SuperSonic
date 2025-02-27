@@ -2,11 +2,6 @@
 
 import type { User } from "next-auth";
 import { useRouter } from "next/navigation";
-
-import { PlusIcon } from "@/components/icons";
-import { SidebarHistory } from "@/components/sidebar-history";
-import { SidebarUserNav } from "@/components/sidebar-user-nav";
-import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -28,17 +23,20 @@ import {
   SquareTerminal,
 } from "lucide-react"
 import Link from "next/link";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { NavUser } from "@/components/sidebar-user-footer";
 import { NavMain } from "@/components/sidebar-content-acc";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export function AppSidebar({ user }: { user: User | undefined }) {
   const router = useRouter();
   const { setOpenMobile } = useSidebar();
+  const {data:session} = useSession()
+  console.log(session);
   const data = {
     user: {
-      address:"Gwdcbwiecbeiucbicvcui4r23u4rb24rcbrc7rb4rb84r7b",
-      balance:"0.0000"
+      address:(session?.user as any)?.publicAddress,
+      balance:(session?.user as any)?.balance
     },
     teams: [
       {
@@ -167,7 +165,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
     <Sidebar className="group-data-[side=left]:border-r-0 ">
       <SidebarHeader>
         <SidebarMenu>
-          <div className="py-3 border-b border-[#2D2D2D] mx-auto flex flex-row justify-between items-center">
+          <div className="py-3 border-b border-[#2D2D2D] text-[#FFFFFF] mx-auto flex flex-row justify-between items-center">
             <Link
               href="/"
               onClick={() => {
@@ -175,8 +173,14 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row gap-3 items-center"
             >
-              <span className=" text-3xl font-marvin px-2 hover:text-[#bcbbbb] rounded-md cursor-pointer">
-                SONICARB
+              <span className=" text-3xl font-marvin px-2 hover:text-[#bcbbbb] rounded-md cursor-pointer flex flex-row gap-3">
+                <Image
+                  src={"/images/logo.svg"}
+                  alt=""
+                  width={24}
+                  height={24}
+                />
+                SUPERSONIC
               </span>
             </Link>
             {/* Code for adding new chat */}
@@ -213,14 +217,19 @@ export function AppSidebar({ user }: { user: User | undefined }) {
         )}
         <div className="py-3 border-t border-[#2D2D2D] mx-auto flex flex-row justify-between items-center">
           <Link
-            href="/"
+            href="https://x.com/Super_Sonic_org"
             onClick={() => {
               setOpenMobile(false);
             }}
             className=""
           >
-            <span className="text-md  px-2 rounded-md cursor-pointer">
-              Follow us on <span className="text-2xl font-marvin">X</span>
+            <span className="text-md  px-2 rounded-md cursor-pointer flex flex-row gap-4">
+              Follow us on <Image
+                src={"/images/x.svg"}
+                alt="X"
+                width={24}
+                height={24}
+              />
             </span>
           </Link>
         </div>

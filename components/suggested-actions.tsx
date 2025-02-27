@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import { ChatRequestOptions, CreateMessage, Message } from 'ai';
+import type { ChatRequestOptions, CreateMessage, Message } from 'ai';
 import { memo } from 'react';
 
 interface SuggestedActionsProps {
@@ -17,25 +17,25 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
       title: 'What are the advantages',
-      label: 'of using Next.js?',
-      action: 'What are the advantages of using Next.js?',
+      label: 'of using blockchain technology?',
+      action: 'What are the advantages of using blockchain technology?',
     },
     {
-      title: 'Write code to',
-      label: `demonstrate djikstra's algorithm`,
-      action: `Write code to demonstrate djikstra's algorithm`,
+      title: 'Explain the concept',
+      label: 'of smart contracts in Ethereum.',
+      action: 'Explain the concept of smart contracts in Ethereum.',
     },
     {
-      title: 'Help me write an essay',
-      label: `about silicon valley`,
-      action: `Help me write an essay about silicon valley`,
+      title: 'How does DeFi',
+      label: 'differ from traditional finance?',
+      action: 'How does DeFi differ from traditional finance?',
     },
     {
-      title: 'What is the weather',
-      label: 'in San Francisco?',
-      action: 'What is the weather in San Francisco?',
+      title: 'What are NFTs',
+      label: 'and how do they work?',
+      action: 'What are NFTs and how do they work?',
     },
-  ];
+];
 
   return (
     <div className="grid sm:grid-cols-2 gap-2 w-full">

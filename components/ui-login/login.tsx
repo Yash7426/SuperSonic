@@ -2,8 +2,15 @@
 import { signIn, useSession } from "next-auth/react";
 import { ethers } from "ethers";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 async function onSignInWithMetaMask() {
   try {
+    console.log("running here");
     if (!window.ethereum) {
       alert("Please install MetaMask first.");
       return;
@@ -11,11 +18,15 @@ async function onSignInWithMetaMask() {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const publicAddress = await signer.getAddress();
+    const balance = await provider.getBalance(publicAddress);
+
+    const s=ethers.formatEther(balance)
+    const ss = s.toString();
 
     const response = await fetch("/api/crypto", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ publicAddress }),
+      body: JSON.stringify({ publicAddress , ss}),
     });
     
     // Debug log the response status and text if needed
@@ -29,6 +40,7 @@ async function onSignInWithMetaMask() {
     const signedNonce = await signer.signMessage(nonce);
 
     await signIn("crypto", {
+      ss,
       publicAddress,
       signedNonce,
       callbackUrl: "/chat",

@@ -306,7 +306,7 @@ function PureAttachmentsButton({
   );
 }
 
-const AttachmentsButton = memo(PureAttachmentsButton);
+export const AttachmentsButton = memo(PureAttachmentsButton);
 
 function PureStopButton({
   stop,
@@ -329,7 +329,7 @@ function PureStopButton({
   );
 }
 
-const StopButton = memo(PureStopButton);
+export const StopButton = memo(PureStopButton);
 
 function PureSendButton({
   submitForm,
@@ -354,7 +354,7 @@ function PureSendButton({
   );
 }
 
-const SendButton = memo(PureSendButton, (prevProps, nextProps) => {
+export const SendButton = memo(PureSendButton, (prevProps, nextProps) => {
   if (prevProps.uploadQueue.length !== nextProps.uploadQueue.length)
     return false;
   if (prevProps.input !== nextProps.input) return false;

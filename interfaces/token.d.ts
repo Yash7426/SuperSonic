@@ -1,11 +1,14 @@
 interface TokenCardProps {
-    name: string;
-    logo: string;
-    price: number;
-    priceChange: number;
-    volume: number;
-    profitPerToken: number;
-    bestBuy: string;
-    bestSell: string;
-  }
-  
+  name: string;
+  logo: string;
+  price: number;
+  volume: number;
+  profitPerToken?: number;
+  priceChange?: number;
+  bestBuy?: string;
+  bestBuyPrice?: number;
+  bestSell?: string;
+  bestSellPrice?: number;
+  after10min?: number | null
+  after24h?: number | null
+}

@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/tooltip";
 
 import {
+  ChartCandlestick,
   ChartPie,
-  ChevronRight,
   CircleDot,
   MessageSquare,
   PlusIcon,
@@ -22,13 +22,6 @@ import {
 
 import {
   SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
 import {
@@ -38,7 +31,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useRouter } from "next/navigation";
-import { User as UserType } from "next-auth";
+import type { User as UserType } from "next-auth";
 import { SidebarHistory } from "@/components/sidebar-history";
 
 export function NavMain({
@@ -63,6 +56,7 @@ export function NavMain({
     if (pathname.includes("chat")) return "chat";
     if (pathname.includes("token")) return "token";
     if (pathname.includes("account")) return "account";
+    if (pathname.includes("stake")) return "stake";
     if (pathname.includes("portfolio")) return "portfolio";
     return "";
   };
@@ -87,14 +81,14 @@ export function NavMain({
             //     router.push("/chat")
             // }}
             className={`px-2 hover:no-underline rounded-md ${
-              active == "chat"
+              active === "chat"
                 ? "bg-[#8902F4] text-white text-xl font-marvin font-bold"
                 : "text-[#8C8C8C] text-sm font-semibold "
             }`}
           >
             <span
               className={`flex gap-x-2  ${
-                active == "chat"
+                active === "chat"
                   ? "flex-col items-start"
                   : "flex-row items-center"
               }`}
@@ -126,43 +120,44 @@ export function NavMain({
             <SidebarHistory user={user} />  
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem
-          className={`border-0 rounded-md bg-[#1D1D1D]`}
-          value="item-2"
-        >
-          <AccordionTrigger
-            onClick={() => {
-              router.push("/token");
-            }}
-            className={`px-2 hover:no-underline rounded-md ${
-              active == "token"
-                ? "bg-[#8902F4] text-white text-xl font-marvin"
-                : "text-[#8C8C8C] text-sm font-semibold "
-            }`}
-          >
-            <span
-              className={`flex gap-x-2  ${
-                active == "token"
-                  ? "flex-col items-start"
-                  : "flex-row items-center"
-              }`}
-            >
-              {" "}
-              <CircleDot className="w-4 h-4" /> Tokens
-            </span>
-          </AccordionTrigger>
-          <AccordionContent className="flex items-center py-2 px-2">
-            Tokens here
-          </AccordionContent>
-        </AccordionItem>
       </Accordion>
 
+        <div
+        onClick={() => {
+          router.push("/token");
+        }}
+        className={`cursor-pointer py-[12px] px-2 rounded-md ${
+          active === "token"
+            ? "bg-[#8902F4] text-white font-marvin"
+            : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
+        }`}
+      >
+        <span className={`flex gap-x-2 items-center`}>
+        <CircleDot className="w-4 h-4" />
+          Token
+        </span>
+      </div>
+      <div
+        onClick={() => {
+          router.push("/stake");
+        }}
+        className={`cursor-pointer py-[12px] px-2 rounded-md ${
+          active === "stake"
+            ? "bg-[#8902F4] text-white font-marvin"
+            : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
+        }`}
+      >
+        <span className={`flex gap-x-2 items-center`}>
+          <ChartCandlestick className="w-4 h-4" />
+          Stake
+        </span>
+      </div>
       <div
         onClick={() => {
           router.push("/account");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "account"
+          active === "account"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}
@@ -177,7 +172,7 @@ export function NavMain({
           router.push("/portfolio");
         }}
         className={`cursor-pointer py-[12px] px-2 rounded-md ${
-          active == "portfolio"
+          active === "portfolio"
             ? "bg-[#8902F4] text-white font-marvin"
             : "text-[#8C8C8C] font-semibold bg-[#1D1D1D]"
         }`}

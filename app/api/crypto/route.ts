@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
-import { randomBytes } from 'crypto';
+import { randomBytes } from 'node:crypto';
 import { upsertUserNonce } from '@/lib/db/queries';
 
 export async function POST(req: Request) {
-  console.log("firstyash")
   try {
-    const { publicAddress } = await req.json();
+    const { publicAddress , ss } = await req.json();
     if (!publicAddress) {
       return NextResponse.json(
         { error: 'Public address is required' },
@@ -18,6 +17,7 @@ export async function POST(req: Request) {
 
     // Upsert the nonce into the user's record (create new user if necessary)
     await upsertUserNonce({
+      balance:ss,
       publicAddress,
       cryptoNonce: nonce,
       cryptoNonceExpires: expires.toISOString(),

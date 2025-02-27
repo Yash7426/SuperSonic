@@ -13,7 +13,13 @@ const HomeNav = () => {
                height={120}
             />
         </div>
-        <div className='font-marvin text-[40px] '>
+        <div className='font-marvin text-[35px] flex flex-row gap-3'>
+            <Image
+              src={"/images/logo.svg"}
+              alt='.'
+              width={30}
+              height={30}
+            />
             SUPERSONIC
         </div>
         <div><Login/></div>

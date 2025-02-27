@@ -17,11 +17,22 @@ export const codeDocumentHandler = createDocumentHandler<'code'>({
         code: z.string(),
       }),
     });
-
     for await (const delta of fullStream) {
       const { type } = delta;
+      
+      if (type === 'text-delta') {
+        const { textDelta } = delta;
 
-      if (type === 'object') {
+        if (textDelta) {
+          dataStream.writeData({
+            type: 'code-delta',
+            content: textDelta ?? '',
+          });
+
+          draftContent = textDelta ?? "";
+        }
+      }
+      else if (type === 'object') {
         const { object } = delta;
         const { code } = object;
 
