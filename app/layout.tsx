@@ -9,13 +9,11 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://super-sonic-eta.vercel.app/"
-  ),
+  metadataBase: new URL("https://super-sonic-eta.vercel.app/"),
   title: "SuperSonic",
   description: "AI powered arbitrage platform built on SONIC",
   // change the logo here
-  icons : "/images/sonic.svg"
+  icons: "/images/sonic.svg",
 };
 
 export const viewport = {

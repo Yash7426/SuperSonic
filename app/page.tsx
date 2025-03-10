@@ -66,8 +66,14 @@ export default function Home() {
 
         if (e.deltaY > 0) {
           // Scroll Down
-          if (scrollPosition + sectionHeight >= currentSection.current * sectionHeight) {
-            const nextSection = Math.min(currentSection.current + 1, sections.length - 1);
+          if (
+            scrollPosition + sectionHeight >=
+            currentSection.current * sectionHeight
+          ) {
+            const nextSection = Math.min(
+              currentSection.current + 1,
+              sections.length - 1
+            );
             currentSection.current = nextSection;
             scrollToSection(nextSection);
           }
