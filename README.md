@@ -162,7 +162,7 @@ The following individuals have contributed to this project:
 5. **AI & Analytics**: Connect with **AI-SDK** to power the AI chat assistant, delivering real-time insights and market trends.    
 
 
-### 2. [Mayank Rawat](https://github.com/smayank1214)
+### 2. [Shubham Roy](https://github.com/sr2005roy)
 - **Role:** UI/UX Designer  
 - **Responsibilities:**  
 
@@ -196,7 +196,7 @@ The following individuals have contributed to this project:
 5. Ensures compatibility with existing DeFi protocols, allowing users to **trade and stake assets across different chains** without friction.
 
 
-### 5. [Yash Kudnar](https://github.com/Yash9276)
+### 5. [Aviral Hatwal](https://github.com/cyberviking5)
 - **Role:** Blockchain developer
 - **Responsibilities:**   
 1. Develops and implements **liquid staking** smart contracts for seamless token staking and unstaking.  
