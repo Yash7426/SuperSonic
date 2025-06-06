@@ -22,19 +22,19 @@ const dummyData: coin_val[] = [
     name: "bitcoin",
     tenmin: 3,
     oneday: 4,
-    logo : "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+    logo : "images/bitcoin-btc-logo.png"
   },
   {
     name: "ethereum",
     tenmin: 1,
     oneday: 2,
-    logo:"https://cryptologos.cc/logos/ethereum-eth-logo.png"
+    logo:"images/ethereum-eth-logo.png"
   },
   {
     name: "solana",
     tenmin: 5,
     oneday: 6,
-    logo:"https://cryptologos.cc/logos/solana-sol-logo.png"
+    logo:"images/solana-sol-logo.png"
   },
   {
     name: "sonic",
@@ -46,7 +46,7 @@ const dummyData: coin_val[] = [
     name: "dogecoin",
     tenmin: 0,
     oneday: 0,
-    logo :"https://cryptologos.cc/logos/dogecoin-doge-logo.png'"
+    logo :"images/dogecoin-doge-logo.png'"
   },
 ];
 function cleanTokenParam(param: string): string {
@@ -75,7 +75,7 @@ const Page = () => {
   };
   const getLogo = (coinName: string): string => {
     const coin = dummyData.find((c) => c.name === coinName.toLowerCase());
-    return coin ? coin.logo : "https://cryptologos.cc/logos/bitcoin-btc-logo.png";
+    return coin ? coin.logo : "images/bitcoin-btc-logo.png";
   };
   const [predictions, setPredictions] = useState<{
     after10min: number | null;
@@ -170,7 +170,7 @@ const Page = () => {
 
   // const t = {
   //   name: "Bitcoin",
-  //   logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+  //   logo: "images/bitcoin-btc-logo.png",
   //   price: 48250.75,
   //   priceChange: -1.2,
   //   volume: 2560000000,

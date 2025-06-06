@@ -11,7 +11,9 @@ const nextConfig: NextConfig = {
         hostname: 'avatar.vercel.sh',
       },
       {
+        protocol: 'https',
         hostname: 'cryptologos.cc',
+        pathname: '/**',
       },
       {
         hostname: 'coin-images.coingecko.com',

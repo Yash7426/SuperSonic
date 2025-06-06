@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 const cryptoIcons = [
-  'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
-  'https://cryptologos.cc/logos/ethereum-eth-logo.png',
-  'https://cryptologos.cc/logos/dogecoin-doge-logo.png',
-  'https://cryptologos.cc/logos/solana-sol-logo.png',
+  '/images/bitcoin-btc-logo.svg',
+  '/images/ethereum-eth-logo.png',
+  'images/dogecoin-doge-logo.png',
+  'images/solana-sol-logo.png',
   '/images/sonic-logo.svg'
 ];
 
@@ -49,7 +49,7 @@ const LandingSec = () => {
           style={getPosition(index)}
           animate={getFloatingAnimation(index)}
         >
-          <Image src={icon} alt="crypto-icon" width={200} height={200} className='w-12 h-12 md:w-24 md:h-24 rounded-full ' />
+          <img src={icon} alt="crypto-icon" width={200} height={200} className='w-12 h-12 md:w-24 md:h-24 rounded-full ' />
         </motion.div>
       ))}
       
