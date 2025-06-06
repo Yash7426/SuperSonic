@@ -22,7 +22,7 @@ const dummyData: coin_val[] = [
     name: "bitcoin",
     tenmin: 3,
     oneday: 4,
-    logo : "images/bitcoin-btc-logo.png"
+    logo : "images/bitcoin-btc-logo.svg"
   },
   {
     name: "ethereum",
