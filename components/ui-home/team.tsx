@@ -22,7 +22,7 @@ const Team: React.FC<TeamProps> = ({ scrollYProgress }) => {
         </div>
         <div className="flex flex-row justify-between">
           <TeamCard name="Dheeraj Pareek" posi="Blockchain Developer" img="aviral" />
-          <TeamCard name="Shubham Roy" posi="Web Developer" img="mayank" />
+          <TeamCard name="Mayank Rawat" posi="Web Developer" img="mayank" />
           <TeamCard name="Darsh Baxi" posi="AI Developer" img="darsh" />
           <TeamCard name="Aviral Hatwal" posi="Blockchain Developer" img="kudnar" />
           <TeamCard name="Yash Agarwal" posi="Web Developer" img="yash" />
