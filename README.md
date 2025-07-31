@@ -162,8 +162,8 @@ The following individuals have contributed to this project:
 5. **AI & Analytics**: Connect with **AI-SDK** to power the AI chat assistant, delivering real-time insights and market trends.    
 
 
-### 2. [Shubham Roy](https://github.com/sr2005roy)
-- **Role:** UI/UX Designer  
+### 2. [Mayank Rawat](https://github.com/smayank1214)
+- **Role:** UI/UX Designer and Frontend Developer
 - **Responsibilities:**  
 
 1. **User-Centered Design** – Create intuitive and visually appealing interfaces that enhance user experience while ensuring seamless navigation.  
