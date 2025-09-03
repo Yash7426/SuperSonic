@@ -203,8 +203,8 @@ The following individuals have contributed to this project:
 5. Collaborates with the AI/ML team to provide **staking insights and recommendations** based on market trends.  
 
 ### 6. [Dheeraj Pareek](https://github.com/Pareekdheeraj)
-**Role:** Frontend Developer and UI Specialist  
-**Responsibilities:**  
+- **Role:** Frontend Developer and UI Specialist
+- **Responsibilities:**  
 1. **Developing User Interface:** Build an intuitive and responsive UI using Next.js and Tailwind CSS to ensure a seamless user experience.  
 2. **Mobile Responsiveness:** Optimize the UI for mobile and desktop devices, ensuring a smooth user experience across all screen sizes.
 3. **User Feedback & Iteration:** Gather feedback from early users and iterate on designs to improve usability, accessibility, and overall user satisfaction.
