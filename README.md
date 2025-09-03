@@ -171,9 +171,6 @@ The following individuals have contributed to this project:
 3. **Consistency & Branding** – Maintain a consistent design language using **Radix-UI** components and **Tailwind CSS**, ensuring a professional and cohesive look.  
 4. **Dark & Light Mode Support** – Implement a responsive theme system for accessibility and improved usability across different environments.  
 5. **AI Chat & Dashboard UX** – Design an engaging interface for the **AI-powered chat assistant** and interactive dashboards displaying token insights, staking details, and market trends.  
-6. **Mobile Responsiveness** – Optimize the UI for mobile and desktop devices, ensuring a smooth user experience across all screen sizes.  
-7. **User Feedback & Iteration** – Gather feedback from early users and iterate on designs to improve usability, accessibility, and overall user satisfaction.  
-
 
 ### 3. [Darsh Baxi](https://github.com/darshbaxi)
 - **Role:** AI and ML developer
@@ -186,7 +183,7 @@ The following individuals have contributed to this project:
 6. **DEX Performance Analysis** – Train ML models to analyze past DEX liquidity, trading volume, and volatility to refine price prediction accuracy.  
 7. **Continuous Model Optimization** – Fine-tune and improve AI models using real-time data, ensuring adaptability to changing market conditions.  
 
-### 4. [Dheeraj pareek](https://github.com/Pareekdheeraj)
+### 4. [Yash Kudnar](https://github.com/yash2934)
 - **Role:** Blockchain developer
 - **Responsibilities:**  
 1. Integrates **DeBridge** to enable **cross-chain transfers and interoperability** between multiple blockchains.  
@@ -205,6 +202,14 @@ The following individuals have contributed to this project:
 4. Optimizes staking rewards distribution and **APY calculations** for accurate yield predictions.  
 5. Collaborates with the AI/ML team to provide **staking insights and recommendations** based on market trends.  
 
+### 6. [Dheeraj Pareek](https://github.com/Pareekdheeraj)
+**Role:** Frontend Developer and UI Specialist  
+**Responsibilities:**  
+1. **Developing User Interface:** Build an intuitive and responsive UI using Next.js and Tailwind CSS to ensure a seamless user experience.  
+2. **Mobile Responsiveness:** Optimize the UI for mobile and desktop devices, ensuring a smooth user experience across all screen sizes.
+3. **User Feedback & Iteration:** Gather feedback from early users and iterate on designs to improve usability, accessibility, and overall user satisfaction.
+
+  
 # 🔗 Repository Links  
 Explore the core components of **SuperSonic** on GitHub:  
 
